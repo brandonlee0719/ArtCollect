@@ -5,7 +5,7 @@ import { Link } from '@reach/router';
 import useOnclickOutside from "react-cool-onclickoutside";
 
 import {
-  Tezos,
+  // Tezos,
   TEZOS_COLLECT_NETWORK,
   TEZOS_COLLECT_WALLET,
 } from "../../utils/constants";
@@ -38,6 +38,8 @@ const Header = function () {
   const [openMenu1, setOpenMenu1] = React.useState(false);
   const [openMenu2, setOpenMenu2] = React.useState(false);
   const [openMenu3, setOpenMenu3] = React.useState(false);
+  const [activeAddress, setActiveAddress] = React.useState("");
+  
   const handleBtnClick = () => {
     setOpenMenu(!openMenu);
   };
@@ -80,12 +82,7 @@ const Header = function () {
       network: TEZOS_COLLECT_NETWORK,
     });
     const _activeAddress = await TEZOS_COLLECT_WALLET.getPKH();
-    // setActiveAddress(_activeAddress);
-    console.log("---------------", _activeAddress);
-    localStorage.setItem(
-      "activeAddress",
-      JSON.stringify({ address: _activeAddress })
-    );
+    setActiveAddress(_activeAddress);
     // try {
     //   let res = await fetchProfile(_activeAddress);
     //   console.log("res", res);
@@ -101,6 +98,11 @@ const Header = function () {
     // } catch (error) {
     //   console.log(error);
     // }
+  };
+
+  const onDisconnectWallet = async () => {
+    setActiveAddress("");
+    await TEZOS_COLLECT_WALLET.clearActiveAccount();
   };
 
   const [showmenu, btn_icon] = useState(false);
@@ -356,7 +358,9 @@ const Header = function () {
           </BreakpointProvider>
 
           <div className='mainside'>
-            <div className="btn-main" onClick={onConnectWallet}>Connect Wallet</div>
+            {activeAddress !== ""
+              ? <div className="btn-main" onClick={onDisconnectWallet}>{activeAddress.slice(0, 5)}...{activeAddress.slice(activeAddress.length-5, activeAddress.length)}</div>
+              : <div className="btn-main" onClick={onConnectWallet}>Connect Wallet</div>}
           </div>
 
         </div>
