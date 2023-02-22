@@ -5,12 +5,10 @@ import Header from './menu/header';
 import Home from './pages/home';
 import Home1 from './pages/home1';
 import Home2 from './pages/home2';
-import Home3 from './pages/home3';
 import Explore from './pages/explore';
 import Explore2 from './pages/explore2';
-import Rangking from './pages/rangking';
-import Auction from './pages/Auction';
 import Helpcenter from './pages/helpcenter';
+import Rangking from './pages/rangking';
 import Colection from './pages/colection';
 import ItemDetail from './pages/ItemDetail';
 import Author from './pages/Author';
@@ -22,9 +20,7 @@ import Price from './pages/price';
 import Works from './pages/works';
 import News from './pages/news';
 import Create from './pages/create';
-import Create2 from './pages/create2';
-import Create3 from './pages/create3';
-import Createoption from './pages/createOptions';
+import Auction from './pages/Auction';
 import Activity from './pages/activity';
 import Contact from './pages/contact';
 import ElegantIcons from './pages/elegantIcons';
@@ -73,12 +69,10 @@ const app= () => (
         </Home>
         <Home1 path="/home1" />
         <Home2 path="/home2" />
-        <Home3 path="/home3" />
         <Explore path="/explore" />
         <Explore2 path="/explore2" />
-        <Rangking path="/rangking" />
-        <Auction path="/Auction" />
         <Helpcenter path="/helpcenter" />
+        <Rangking path="/rangking" />
         <Colection path="/colection" />
         <ItemDetail path="/ItemDetail" />
         <Author path="/Author" />
@@ -90,9 +84,7 @@ const app= () => (
         <Works path="/works" />
         <News path="/news" />
         <Create path="/create" />
-        <Create2 path="/create2" />
-        <Create3 path="/create3" />
-        <Createoption path="/createOptions" />
+        <Auction path="/Auction" />
         <Activity path="/activity" />
         <Contact path="/contact" />
         <ElegantIcons path="/elegantIcons" />

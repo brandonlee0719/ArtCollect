@@ -48,22 +48,25 @@ $general: #727272;
 $black_soft: #333;
 $black_col: #2e333c;
 $black_more: #0f0f0f;
-$color: #8364E2;
-$color_more: #403f83;
+$color: #222;
+$color_more: #333;
 .col-white{
   color: $white;
 }
 
 /*font*/
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@200;300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bungee&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;200;300;400&display=swap');
+
 
 /*general*/
 html {scroll-behavior: auto;}
 body {
-  font-family: "DM Sans", Helvetica, Arial, sans-serif;
+  font-family: "Roboto Slab", Helvetica, Arial, sans-serif;
   font-weight: 300;
   font-size: 16px;
   color: $general;
+  background: #FAF6F1;
   word-spacing: 0px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -331,6 +334,7 @@ h6,
 .h4,
 .h5,
 .h6 {
+    font-family: 'Bungee', cursive;
     margin-top: 0;
     font-weight: 700;
     color: #0d0c22;
@@ -651,8 +655,8 @@ p.lead {
     width: max-content;
     text-align: center;
     color: #fff !important;
-    background: #8364E2;
-    border-radius: 6px;
+    background: $color;
+    border-radius: 0;
     letter-spacing: normal;
     outline: 0;
     font-weight: 800;
@@ -661,10 +665,12 @@ p.lead {
     font-size: 14px;
     border: none;
     cursor: pointer;
-    box-shadow: 2px 2px 20px 0px rgba(131, 100, 226, 0);
     transition: all 0.3s ease;
     &:hover{
-      box-shadow: 2px 2px 20px 0px rgba(131, 100, 226, 0.5);
+      color: $color !important;
+      background: $white;
+      border: solid 1px #888;
+      box-shadow: 6px 6px 0px 0px rgba(0,0,0,0.09);
       transition: all 0.3s ease;
     }
     &.inline{
@@ -675,10 +681,6 @@ p.lead {
         background:$white;
       }
     }
-}
-a{
-  text-decoration: none;
-  color: inherit;
 }
 /* dropdown */
   .dropdown-custom.btn{
@@ -714,7 +716,7 @@ a{
   .dropdown-toggle::after{
     font-family: FontAwesome;
     content: "\f078";
-    color: rgba(0, 0, 0, .5);
+    color: $color;
     padding-left: 2px;
     font-size: 8px;
     top: -1px;
@@ -726,20 +728,19 @@ a{
   .item-dropdown{
     width: max-content;
     position: absolute;
-    background: $white;
-    border-radius: 5px;
-    overflow: hidden;
+    background: #FAF6F1;
+    border-radius: 0px;
+    border: solid 1px #888;
     inset: 50px auto auto 0;
     padding: 0 0;
     animation: smoothDrop .2s ease;
     -webkit-animation: smoothDrop .2s ease;
-    box-shadow: 2px 2px 30px 0px rgba(20, 20, 20, 0.1);
     z-index: 1;
     .dropdown{
       position: relative;
       text-align: center;
       a{
-        color: $black_soft !important;
+        color: $color !important;
         text-transform: none;
         font-weight: normal;
         letter-spacing: normal;
@@ -770,6 +771,9 @@ a{
     justify-content: center;
 }
 /*navbar*/
+.mainside a i{
+  display: none;
+}
 .navbar {
     padding: 0;
     position: absolute;
@@ -785,10 +789,10 @@ a{
     transition: all 0.6s ease;
     &.white{
       a{
-        color: $black;
+        color: $color;
       }
       .btn{
-        color: $black;
+        color: $color;
         .lines{
           top: 24px;
         }
@@ -811,7 +815,7 @@ a{
       outline: none;
       transition: all 0.3s ease;
       &:hover{
-        color: inherit;
+        color: $color;
         transition: all 0.3s ease;
       }
       &.active{
@@ -900,7 +904,7 @@ a{
         .search{
           display: inline-block;
           position: relative;
-          top: -9px;
+          top: 4px;
           #quick_search{
             width: 100%;
           }
@@ -911,7 +915,7 @@ a{
           top: 28px;
         }
         .dropdown-custom.btn{
-          color: $gray;
+          color: $color;
           width: 100%;
           text-align: left;
           &::after{
@@ -966,21 +970,21 @@ a{
       width: 100%;
       height: 2px;
       top: 0px;
-      background-color:$black;
+      background-color:$color;
       }
       .menu-line1 {
       position: absolute;
       width: 100%;
       height: 2px;
       top: 5px;
-      background-color:$black;
+      background-color:$color;
       }
       .menu-line2 {
       position: absolute;
       width: 100%;
       height: 2px;
       top: 10px;
-      background-color:$black;
+      background-color:$color;
       }
        &.sticky {
        position: absolute !important;
@@ -1008,16 +1012,24 @@ a{
       position: fixed;
       top: 0;
       width: 100%;
-      background: #1b1b1b;
-      border-bottom: solid 1px #dddddd;
+      background: #FAF6F1;
+      border-bottom: 0;
       transition: all 0.6s ease;
         &.white{
-          background: $white;
+          background: #FAF6F1;
+          box-shadow: 0 4px 20px 0 rgba(10,10,10,0);
+          border-bottom: solid 1px #dddddd;
           .btn{
-            color: $black;
+            color: $color;
           }
           a{
-            color: $black;
+            color: $color;
+          }
+          .mainside a{
+            color: $white;
+            &:hover{
+              color: $color;
+            }
           }
         }
       }
@@ -1028,12 +1040,19 @@ a{
         #quick_search {
             padding: 4px 11px;
             border: none;
-            border-radius: 6px;
             font-size: 15px;
-            background: rgba(131, 100, 226, .1);
+            border: solid 1px #888;
+            color: $general;
+            background: #FDFBF8;
             width: 274px;
             height: 34px;
             outline: none;
+            transition: .7s;
+            box-shadow: 6px 6px 0px 0px rgba(0,0,0,0.09);
+            &:hover{
+              transition: .7s;
+              box-shadow: 0px 0px 0px 4px rgba(0,0,0,0.3);
+            }
         }
       }
       .mainside{
@@ -1042,9 +1061,8 @@ a{
         padding-right: 0;
         a{
           text-align: center;
-          color: #fff !important;
-          background: #8364E2;
-          border-radius: 6px;
+          color: #fff;
+          background: $color;
           letter-spacing: normal;
           outline: 0;
           font-weight: 800;
@@ -1053,11 +1071,15 @@ a{
           font-size: 14px;
           border: none;
           cursor: pointer;
-          box-shadow: 2px 2px 20px 0px rgba(131,100,226, 0);
+          box-shadow: 6px 6px 0px 0px rgba(0,0,0,0.0);
           transition: all 0.3s ease;
           &:hover{
-            box-shadow: 2px 2px 20px 0px rgba(131,100,226, 0.5);
+            color: $color;
+            background: $white;
+            border: solid 1px #888;
+            box-shadow: 2px 2px 20px 0px #FF343F;
             transition: all 0.3s ease;
+            box-shadow: 6px 6px 0px 0px rgba(0,0,0,0.09);
           }
         }
       }
@@ -1368,6 +1390,7 @@ a{
   background-size: cover;
   width: 100%;
   position: relative;
+  border-bottom: 1px solid rgba(0,0,0,.1);
   &::before{
     content: '';
     width: 100%;
@@ -1385,10 +1408,10 @@ a{
     padding: 130px 0 110px;
     h1{
       margin-bottom: 0;
-      color: $white;
+      color: $color;
     }
     p{
-      color: $white;
+      color: $general;
       margin-top: 15px;
     }
     .list{
@@ -1610,27 +1633,32 @@ a{
 /*** footer ***/
 footer{
   padding: 80px 0 0 0;
+  background: #0d0c22;
   &.footer-light {
-      background: #ffffff !important;
-      border-top: solid 1px #eeeeee;
-      color: #595d69;
+      border-top: solid 1px rgba(255,255,255,.025);
+      color: $white;
       a {
-        color: #595d69;
+        color: $white;
         font-weight: 400;
         text-decoration: none !important;
+        &:hover{
+          color: $white;
+        }
     }
     #form_subscribe{
        input[type="text"] {
         width: 80%;
         float: left;
-        border-radius: 5px 0 0 5px;
-        background: rgba(255, 255, 255, .7);
+        border-radius: 2px 0 0 2px;
+        color: #ffffff;
+        background: rgba(255, 255, 255, .1);
         border: solid 1px #333333;
         border-right-color: rgb(51, 51, 51);
         border-right-style: solid;
         border-right-width: 1px;
         border-right: none;
         padding: 6px 12px;
+        margin-bottom: 0;
         box-shadow: 2px 2px 20px 0px rgba(20, 20, 20, 0.05);
       }
       #btn-subscribe i {
@@ -1638,19 +1666,17 @@ footer{
         font-size: 28px;
         float: left;
         width: 20%;
-        background: $color;
+        background: none;
         color: #ffffff;
         display: table-cell;
         padding: 5px 0 5px 0;
-        border-radius: 0 5px 5px 0;
-        -moz-border-radius: 0 5px 5px 0;
-        -webkit-border-radius: 0 5px 5px 0;
+        border-radius: 0 30px 30px 0;
       }
     }
     .subfooter {
       margin-top: 40px;
       padding: 20px 0 20px 0;
-      border-top: solid 1px #eeeeee;
+      border-top: solid 1px rgba(255,255,255,.1);
       span{
         cursor: pointer;
         img{
@@ -1674,7 +1700,7 @@ footer{
           i {
             text-shadow: none;
             color: $white;
-            background: $color_more;
+            background: none;
             padding: 12px 10px 8px 10px;
             width: 34px;
             height: 34px;
@@ -1706,6 +1732,7 @@ footer{
     }
     h5 {
       margin-bottom: 20px;
+      color: $white;
     }
   }
 }
@@ -1732,7 +1759,7 @@ footer{
       text-align: center;
       line-height: 30px;
       border-radius: 30px;
-      background: $color;
+      background: #0d0c22;
       transition: all 0.3s ease;
       &:hover{
         transform: scale(1.1);
@@ -1894,7 +1921,7 @@ footer{
       font-size: .9rem;
       width: 100%;
       padding: 8px 10px;
-      border: 1px solid #ebebeb;
+      border: 1px solid rgba(0,0,0,.1);
       margin-bottom: 15px;
     }
     textarea{
@@ -1902,7 +1929,7 @@ footer{
       width: 100%;
       height: 195px;
       padding: 8px 10px;
-      border: 1px solid #ebebeb;
+      border: 1px solid rgba(0,0,0,.1);
       margin-bottom: 15px;
     }
     .msg-error{
@@ -1971,16 +1998,16 @@ footer{
 .padding40.box-rounded.mb30{
   padding: 40px;
   border-radius: 3px;
-  background-color: rgb(242, 246, 254);
+  background-color: rgba(255, 255, 255, .05);
   &.text-light{
     color: $white;
-    background: $color_more;
+    background: rgba(255, 255, 255, .05);
     margin-bottom: 0;
     h3{
-      color: $white;
+      color: $color;
     }
     .btn{
-      color: $white;
+      color: $color;
     }
   }
 }
@@ -1992,6 +2019,7 @@ address {
     &.s1 span {
       display: block;
       padding: 0;
+      color: $color;
       font-size: 15px;
       line-height: 1.7em;
       margin-bottom: 5px;
@@ -2036,12 +2064,12 @@ address {
 .post-text {
     padding-top: 20px;
     .p-tagline, .p-title {
-        background: $color_more;
+        background: $color;
         color: $white;
         position: absolute;
         top: 20px;
         left: 20px;
-        border-radius: 3px;
+        border-radius: 0;
         display: inline-block;
         font-size: 10px;
         font-weight: bold;
@@ -2061,7 +2089,7 @@ address {
       margin-top: 10px;
       margin-bottom: 10px;
       span {
-        color: #1A1C26;
+        color: $color;
         text-decoration: none;
         font-size: 22px;
         font-weight: bold;
@@ -2078,21 +2106,20 @@ address {
 }
 .pagination li .a {
     font-size: 14px;
-    color: #888;
-    border: solid 1px #dddddd;
+    color: $color;
+    border: solid 1px rgba(255,255,255,.1);
     border-right: none;
     background: none;
     padding: 15px 20px 15px 20px;
     border-radius: 0;
-    background: $white;
     cursor: pointer;
 }
 .dark-scheme .pagination li .a{
-    border-color: rgba(255, 255, 255, .1);
+    border-color: rgba(255, 255, 255, 0);
     background: #21273e;
 }
 .pagination li:last-child .a {
-    border-right: solid 1px #dddddd;
+    border-right: solid 1px rgba(255,255,255,.1);
 }
 .dark-scheme .pagination li:last-child .a {
     border-right-color: rgba(255, 255, 255, .1);
@@ -2105,7 +2132,7 @@ address {
 /*** create file ***/
 .d-create-file {
     padding: 50px;
-    border-radius: 10px;
+    border-radius: 0;
     border: dashed 3px #dddddd;
     text-align: center;
     #get_file{
@@ -2127,7 +2154,7 @@ address {
       }
       &:hover{
         .btn-main{
-          box-shadow: 2px 2px 20px 0px rgba(131, 100, 226, 0.5);
+          box-shadow: 2px 2px 20px 0px #FF343F;
           transition: all 0.3s ease;
         }
       }
@@ -2149,8 +2176,9 @@ address {
     li {
       display: inline-block;
       padding: 8px 10px;
-      border: solid 1px #dddddd;
-      border-radius: 5px;
+      border: solid 1px #888;
+      background: #FDFBF8;
+      border-radius: 0;
       margin-right: 5px;
       margin-bottom: 10px;
       width: 48%;
@@ -2162,7 +2190,7 @@ address {
         padding: 9px 0;
         text-align: center;
         border-radius: 100%;
-        background: #eee;
+        background: rgba(255,255,255,.01);
         color: $color;
         margin-right: 10px;
       }
@@ -2175,11 +2203,13 @@ address {
     li {
       padding: 20px;
       padding-right: 20px;
-      border-radius: 10px;
+      border-radius: 0;
       margin-bottom: 20px;
       position: relative;
       padding-right: 100px;
-      background: rgba(131,100,226,.07);
+      border: solid 1px #888;
+      background: #FDFBF8;
+      box-shadow: 6px 6px 0px 0px rgba(0,0,0,0.09);
       img {
         width: 80px;
         position: absolute;
@@ -2230,13 +2260,14 @@ address {
         top: 30%;
         font-size: 26px;
         color: $color;
-        background: #fff;
+        background: rgba(255,255,255,.025);
+        border-top: 1px solid rgba(255,255,255,.1);
+        box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.3);
         height: 48px;
         width: 48px;
         padding: 6px 0;
         text-align: center;
         border-radius: 100%;
-        box-shadow: 2px 2px 20px 0px rgba(0, 0, 0, 0.1);
       }
     }
 }
@@ -2251,11 +2282,9 @@ address {
     overflow: hidden;
     padding: 40px;
     border-radius: 3px;
-    -moz-border-radius: 3px;
-    -webkit-border-radius: 3px;
 }
 .feature-box.s1 .inner {
-    background: #ffffff;
+    background: #212428;
 }
 .feature-box.s1:hover .inner i {
     background: none;
@@ -2348,9 +2377,7 @@ i.font60 {
     padding: 14px 0;
     width: 56px;
     height: 56px;
-    border-radius: 3px;
-    -moz-border-radius: 3px;
-    -webkit-border-radius: 3px;
+    border-radius: 0;
 }
 .feature-box.style-3 i.wm {
     position: absolute;
@@ -2358,7 +2385,7 @@ i.font60 {
     background: none;
     width: auto;
     height: auto;
-    color: rgba(131,100,226, .1);
+    color: rgba(13, 12, 34, 0.1);
     right: 0;
     top: 30%;
 }
@@ -2397,13 +2424,12 @@ i.font60 {
 .feature-box.f-boxed {
     overflow: none;
     padding: 50px;
-    background: rgba(131,100,226, .1);
-    border-radius: 6px;
-    -moz-border-radius: 6px;
-    -webkit-border-radius: 6px;
+    background: rgba(13,12,34,.1);
+    border-radius: 0;
     transition: .7s;
     &:hover{
-      background: #403f83;
+      background: $color;
+      color: $white;
       transition: .7s;
     }
 }
@@ -2423,7 +2449,7 @@ i.font60 {
     border-radius: 60px;
 }
 .feature-box i.i-boxed {
-    border-radius: 5px;
+    border-radius: 0;
 }
 .feature-box-small-icon.center {
     text-align: center;
@@ -2537,13 +2563,13 @@ i.font60 {
     transition: .7s;
 }
 
+/*** column nft ***/
 .nft_coll {
-    background: #ffffff;
     padding-bottom: 10px;
-    border: solid 1px #dddddd;
-    border-radius: 10px;
-    -moz-border-radius: 10px;
-    -webkit-border-radius: 10px;
+    border-radius: 0px;
+    border: solid 1px #888;
+    background: #FDFBF8;
+    box-shadow: 6px 6px 0px 0px rgba(0,0,0,0.09);
     margin: 10px;
     img{
       transition: .7s;
@@ -2560,9 +2586,7 @@ i.font60 {
     width: 100%;
     height: 200%;
     overflow: hidden;
-    border-radius: 10px 10px 0 0;
-    -moz-border-radius: 10px 10px 0 0;
-    -webkit-border-radius: 10px 10px 0 0;
+    border-radius:0;
 }
 .nft_coll_pp {
     width: 60px;
@@ -2623,7 +2647,7 @@ i.font60 {
   width: 100%;
     .slick-prev{
         left: -12px;
-        background: $white;
+        background: #212428;
         border-radius: 45px;
         display: block;
         width: 45px;
@@ -2637,9 +2661,9 @@ i.font60 {
           font-family: FontAwesome !important;
           font-style: normal;
           font-weight: normal;
-          color: $black;
-          background: $white;
-          border: 1px solid $gray;
+          color: $white;
+          background: #212428;
+          border: 1px solid rgba(255, 255, 255, .1);
           border-radius: 45px;
           display: block;
           width: 45px;
@@ -2653,7 +2677,7 @@ i.font60 {
     }
     .slick-next{
       right: -12px;
-      background: $white;
+      background: #212428;
       border-radius: 45px;
       display: block;
       width: 45px;
@@ -2666,9 +2690,9 @@ i.font60 {
         font-family: FontAwesome !important;
         font-style: normal;
         font-weight: normal;
-        color: $black;
-        background: $white;
-        border: 1px solid $gray;
+        color: $white;
+        background: #212428;
+        border: 1px solid rgba(255, 255, 255, .1);
         border-radius: 45px;
         display: block;
         width: 45px;
@@ -2726,15 +2750,13 @@ i.font60 {
     position: relative;
     padding: 20px;
     margin: 10px;
-    border: solid 1px #ddd;
-    border-radius: 15px;
-    -moz-border-radius: 15px;
-    -webkit-border-radius: 15px;
+    border: solid 1px #888;
+    background: #FDFBF8;
+    border-radius: 0;
     margin-bottom: 25px;
-    background: #ffffff;
     transition: .7s;
+    box-shadow: 6px 6px 0px 0px rgba(0,0,0,0.09);
     &:hover{
-      box-shadow: 2px 2px 30px 0px rgba(10, 10, 10, 0.1);
       transition: .7s;
     }
 }
@@ -2755,7 +2777,7 @@ i.font60 {
 }
 .nft__item_price span {
     margin-left: 10px;
-    color: $black;
+    color: $color;
     font-weight: 700;
 }
 .nft__item_action {
@@ -2780,19 +2802,29 @@ i.font60 {
     color: pink;
     }
 }
+
+/*** countdown ***/
+.de_count{
+  h3{
+    font-size: 2rem;
+    margin-bottom: 0;
+  }
+  h5{
+    font-size: 14px;
+    font-weight: 500;
+  }
+}
 .de_countdown {
     position: relative;
     font-size: .8rem;
     position: absolute;
     right: 20px;
-    background: #ffffff;
+    background: #FAF6F1;
     padding: 6px 10px;
-    border-radius: 30px;
-    -moz-border-radius: 30px;
-    -webkit-border-radius: 30px;
-    border: solid 2px $color;
+    border-radius: 0;
+    border: solid 1px $color;
     z-index: 1;
-    color: #0d0c22;
+    color: $color;
     .Clock-days{
       font-weight: bold;
       display: inline-block;
@@ -2871,18 +2903,11 @@ i.font60 {
 .nft__item img {
     width: 100%;
     height: auto !important;
-    border-radius: 8px;
-    -moz-border-radius: 8px;
-    -webkit-border-radius: 8px;
 }
 
 /*** author list ***/
 .author_list {
-  -moz-column-count: 3;
-  -moz-column-gap: 20px;
-  -webkit-column-count: 3;
-  -webkit-column-gap: 20px;
-  column-count: 3;
+  column-count: 4;
   column-gap: 20px;
   li {
     margin-bottom: 30px;
@@ -2900,7 +2925,7 @@ i.font60 {
       img{
         padding: 1px;
         background: $gray;
-        box-shadow: 0px 0px 0px 4px rgba(131, 100, 226, 1);
+        box-shadow: 0px 0px 0px 4px $color;
         transition: .2s ease;
       }
     }
@@ -2913,10 +2938,10 @@ i.font60 {
     padding-left: 70px;
     span{
       cursor: pointer;
-      color: $black;
+      color: $color;
     }
     .bot{
-        color: $gray;
+        color: $general;
         display: block;
         font-size: 14px;
         font-weight: 400;
@@ -2988,7 +3013,7 @@ i.font60 {
 }
 .nft_pic {
     overflow: hidden;
-    border-radius: 10px;
+    border-radius: 0px;
     position: relative;
     margin: 0 10px 10px;
     transition: .7s;
@@ -3017,6 +3042,7 @@ i.font60 {
     color: #ffffff;
 }
 .nft_pic_title {
+    font-family: 'Bungee', cursive; 
     display: block;
     font-weight: bold;
 }
@@ -3029,16 +3055,16 @@ i.font60 {
 .nft-big{
   width: 100%;
     .slick-prev{
-        left: -25px;
-        background: $white !important;
-        border-radius: 60px;
+        left: 10px;
         display: block;
-        width: 60px;
+        width: 40px;
         height: 60px;
+        overflow: hidden;
         line-height: 60px;
         z-index: 1;
         transition: all 0.3s ease;
         &::before {
+          display: block;
           content: "\f053" !important;
           font-size: .9rem;
           font-family: FontAwesome !important;
@@ -3046,20 +3072,26 @@ i.font60 {
           font-weight: normal;
           color: $black;
           position: relative;
-          left: 10px;
           line-height: 60px;
+          width: 60px;
+          height: 60px;
+          padding-left: 20px;
+          border-radius: 60px;
+          background: $white;
+          left: -25px;
+          opacity: 1;
       }
     }
     .slick-next{
-      right: -25px;
-      background: $white !important;
-      border-radius: 60px;
+      right: 9px;
       display: block;
-      width: 60px;
+      width: 40px;
       height: 60px;
       line-height: 60px;
+      overflow: hidden;
       transition: all 0.3s ease;
       &::before {
+        display: block;
         content: "\f054" !important;
         font-size: .9rem;
         font-family: FontAwesome !important;
@@ -3067,8 +3099,14 @@ i.font60 {
         font-weight: normal;
         color: $black;
         position: relative;
-        right: 10px;
         line-height: 60px;
+        width: 60px;
+        height: 60px;
+        padding-right: 20px;
+        border-radius: 60px;
+        background: $white;
+        right: -4px;
+        opacity: 1;
       }
     }
     &:hover{
@@ -3137,6 +3175,12 @@ i.font60 {
         z-index: 7;
       }
     }
+    &.centerEl{
+      display: flex;
+      align-content: center;
+      align-items: center;
+      justify-content: center;
+    }
 }
 #form_quick_search {
     display: inline-block;
@@ -3147,18 +3191,14 @@ i.font60 {
       padding: 8px 12px;
       width: 200px;
       float: left;
-      display: table-cell;
+      color: $white;
       border-radius: 5px 0 0 5px;
-      -moz-border-radius: 5px 0 0 5px;
-      -webkit-border-radius: 5px 0 0 5px;
-      border: solid 1px #ddd;
-          border-right-color: rgb(221, 221, 221);
-          border-right-style: solid;
-          border-right-width: 1px;
+      border: solid 1px rgba(255,255,255,.1);
+      border-right-color: rgb(221, 221, 221);
+      border-right-style: solid;
+      border-right-width: 1px;
       border-right: none;
-      background: rgba(255, 255, 255, .7);
-      -webkit-box-shadow: 2px 2px 20px 0px rgba(20, 20, 20, 0.05);
-      -moz-box-shadow: 2px 2px 20px 0px rgba(20, 20, 20, 0.05);
+      background: none;
       box-shadow: 2px 2px 20px 0px rgba(20, 20, 20, 0.05);
       font-size: 16px;
   }
@@ -3166,6 +3206,7 @@ i.font60 {
     padding: 0;
     margin: 0;
     border: 0;
+    background: none;
     i {
         text-align: center;
         font-size: 16px;
@@ -3177,6 +3218,15 @@ i.font60 {
         padding: 13px 0;
         border-radius: 0 5px 5px 0;
         cursor: pointer;
+    }
+  }
+}
+.select1 {
+  .css-wenqhu-control{
+    background-color: #212428;
+    border: 1px solid rgba(255,255,255,.1);
+    & > div > div{
+      color: $white;
     }
   }
 }
@@ -3305,12 +3355,13 @@ i.font60 {
         padding: 10px 20px;
         margin-right: 5px;
         display: block;
-        background: #f6f6f6;
+        background: $white;
         text-decoration: none;
         color: $color;
+        border: 1px solid rgba(0,0,0,.3);
         font-size: 15px;
-        cursor: poInter;
-        -webkit-border-radius: 3px;
+        cursor: pointer;
+        border-radius: 0;
         &:before {
             content: '';
             position: absolute;
@@ -3322,7 +3373,7 @@ i.font60 {
       }
       &.active span{
         color: $white;
-        background: $color_more;
+        background: $color;
       }
   }
 }
@@ -3338,8 +3389,8 @@ i.font60 {
       position: relative;
       display: inline-block;
       margin: 0;
-          margin-bottom: 0px;
-          margin-left: 0px;
+      margin-bottom: 0px;
+      margin-left: 0px;
       right: 0;
       border: none;
       padding: 0;
@@ -3357,7 +3408,8 @@ i.font60 {
           font-size: 14px;
           text-align: center;
           min-width: 80px;
-          background: rgba(131,100,226, .1);
+          background: rgba(0,0,0, .025);
+          border-top: solid 1px rgba(0, 0, 0, .1);
           border-radius: 3px;
           -moz-border-radius: 3px;
           -webkit-border-radius: 3px;
@@ -3374,7 +3426,7 @@ i.font60 {
   .item_author .author_list_info {
       padding-top: 10px;
       padding-left: 70px;
-      color: #1a1b1e;
+      color: $color;
       font-weight: bold;
   }
   .de_nav{
@@ -3419,6 +3471,9 @@ i.font60 {
       font-weight: 400;
       line-height: 1.2em;
     }
+    b{
+      color: $color;
+    }
 }
 img.img-rounded{
   border-radius: 3px;
@@ -3427,25 +3482,40 @@ img.img-rounded{
 /*** wallet ***/
 .box-url {
     position: relative;
-    padding: 30px;
-    background: $white;
-    border: solid 1px rgba(0, 0, 0, .2);
+    text-align: center;
+    padding: 20px 0;
+    color: #a2a2a2;
+    border: solid 1px #888;
+    background: #FDFBF8;
     display: block;
-    border-radius: 20px;
-    box-shadow: 1px 1px 8px 1px rgba(0,0,0,0.1);
+    border-radius: 0;
+    box-shadow: 6px 6px 0px 0px rgba(0,0,0,0.09);
     transition: .3s;
     &:hover {
-      background: rgba(0,0,0,0.05);
       transition: .3s;
+    }
+    &.left{
+      text-align: left;
     }
     .box-url-label {
       font-weight: bold;
       position: absolute;
       right: 30px;
-      color: #0d0c22;
+      color: $color;
       padding: 2px 10px;
-      background: rgba(0,0,0,0.1);
-      border-radius: 8px;
+      border: solid 1px #888;
+      background: #FDFBF8;
+      border-radius: 0;
+    }
+    i{
+      font-size: 40px;
+      color: $color;
+      margin: 0 auto 15px;
+    }
+    h4{
+      font-family: "Roboto Slab", Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      margin-bottom: 0;
     }
 }
 .mb30 {
@@ -3464,16 +3534,14 @@ img.img-rounded{
     padding: 8px;
     margin-bottom: 20px;
     border: none;
-    border: solid 1px #cccccc;
+    border: solid 1px rgba(0,0,0,.1);
     background: none;
-    border-radius: 6px;
-    -moz-border-radius: 6px;
-    -webkit-border-radius: 6px;
+    border-radius: 0;
     height: auto;
     box-shadow: none;
     -moz-box-shadow: none;
     -webkit-box-shadow: none;
-    color: #333;
+    color: $white;
 }
 .list.s3 {
     display: inline;
@@ -3501,10 +3569,11 @@ img.img-rounded{
 }
 .box-login{
   padding: 40px;
-  background: $white;
-  border-radius: 5px;
+  border: solid 1px #888;
+  background: #FDFBF8;
+  border-radius: 0;
   p{
-    color: $general !important;
+    color: $white !important;
     span{
       color: $color;
       text-decoration: none;
@@ -3592,7 +3661,7 @@ img.img-rounded{
     overflow: hidden;
     position: relative;
     border-radius: 10px;
-    background: #ffffff;
+    background: rgba(255,255,255,.025);
     background-size: auto;
     box-shadow: 2px 2px 20px 0px rgba(0, 0, 0, 0.05);
     .top {
@@ -3636,7 +3705,7 @@ img.img-rounded{
     .action {
       text-align: center;
       padding: 40px 0;
-      border-top: solid 1px #eeeeee;
+      border-top: solid 1px rgba(255,255,255,.1);
       .btn-main{
         margin: 0 auto;
       }
@@ -3738,137 +3807,22 @@ img.img-rounded{
     border: 0;
   }
 }
-
-/*** create 2 ***/
-.de_tab.tab_methods{
-  .de_nav{
-    text-align: left;
-    li{
-      margin: 0 10px 0 0;
-      span{
-        padding: 35px 10px;
-        color: rgba(0,0,0,.6);
-        background: none;
-        border: solid 2px rgba(0, 0, 0, .1);
-        font-size: 14px;
-        line-height: 20px;
-        text-align: center;
-        display: table-cell;
-        vertical-align: middle;
-        border-radius: 12px;
-        min-width: 140px;
-        i{
-          display: block;
-          font-size: 30px;
-          margin-bottom: 10px;
-        }
-      }
-      &.active {
-        span{
-          border-color: $color;
-          i{
-            color: $color;
-          }
-        }
-      }
-    }
-  }
+.card{
+  background: rgba(255,255,255,.025);
 }
-.switch-with-title {
-  h5{
-    float: left;
-    i{
-      color: $color;
-      margin-right: 10px;
-    }
-  }
-  .p-info {
-    font-size: 14px;
-    margin: 0;
-    padding: 0 0 10px 0;
-  }
-  .de-switch {
-    float: right;
-    display: block;
-    label {
-      transition: all 200ms ease-in-out;
-      display: inline-block;
-      position: relative;
-      height: 20px;
-      width: 40px;
-      border-radius: 40px;
-      cursor: pointer;
-      background-color: rgba(0, 0, 0, .3);
-      color: transparent;
-      &::after {
-        transition: all 200ms ease-in-out;
-        content: " ";
-        position: absolute;
-        height: 14px;
-        width: 14px;
-        border-radius: 50%;
-        background-color: white;
-        top: 3px;
-        left: 3px;
-        right: auto;
-    }
-  }
-  input[type="checkbox"] {
-      display: none;
-  }
-  input[type="checkbox"]:checked + label::after {
-      left: 23px;
-  }
-  input[type="checkbox"]:checked + label {
-    background-color: $color;
-  }
-  }
-}
-.hide{
-  display: none !important;
-}
-.show{
-  display: block !important;
-}
-#form_sb {
-  .col{
-    display: flex;
-  }
-  input[type="text"]{
-    padding: 21px 12px 21px 12px;
-    width: 85%;
-    height: 30px;
-    float: left;
-    margin-bottom: 0;
-    border-radius: 8px 0 0 8px;
-    border: none;
-    background: rgba(255,255,255,.7);
-  }
-  #btn-submit{
-    border: none;
-    background: none;
-    margin: 0;
-    padding: 0;
-    i{
-      text-align: center;
-      font-size: 30px;
-      float: left;
-      width: 100%;
-      color: #ffffff;
-      background: $color;
-      display: table-cell;
-      padding: 5px 40px 7px 40px;
-      border-radius: 0 8px 8px 0;
-    }
+.nav-link{
+  color: $general;
+  &:hover{
+    color: $color_more;
   }
 }
 
 /*** filter option ***/
 .item_filter_group {
-    border: solid 1px rgba(255,255,255,.075);
+    border: solid 1px rgba(0,0,0,.075);
     margin-bottom: 25px;
     padding: 30px;
-    border-radius: 12px;
+    border-radius: 0;
     .de_checkbox {
       position: relative;
       display: block;
@@ -3909,7 +3863,7 @@ img.img-rounded{
 
 /*** table ***/
 .de-table.table-rank {
-    color: $general;
+    color: $color;
     display: table;
     margin-bottom: 0;
     --bs-table-bg: transparent;
@@ -3956,7 +3910,7 @@ img.img-rounded{
         z-index: 1;
       }
       i {
-        color: #ffffff;
+        color: $white;
         background: $color;
         font-size: 10px;
         padding: 3px;
@@ -3984,16 +3938,16 @@ img.img-rounded{
     border-radius: 3px;
     li{
       span {
-        border: solid 1px rgba(0,0,0,.1);
+        border: solid 1px rgba(255,255,255,.1);
         padding: 15px 20px 15px 20px;
-        color: $general;
+        color: $color;
         cursor: pointer;
       }
     }
     li.active{
       span {
-        border-color: $color;
         color: $white;
+        border-color: $color;
         border-right: none;
         background: $color;
       }
@@ -4033,7 +3987,6 @@ img.img-rounded{
   }
 }
 
-
 /*** media all ***/
 @media only screen and (max-width: 1199px) {
   .item-dropdown{
@@ -4046,7 +3999,7 @@ img.img-rounded{
     box-shadow: unset;
     .dropdown{
       a{
-        color: $black !important;
+        color: $color !important;
         padding: 10px 10px 10px 0px;
         width: 100%;
         text-align: left;
@@ -4058,14 +4011,22 @@ img.img-rounded{
   .navbar{
     top: 0;
     &.white a{
-      color: $gray;
+      color: $color;
     }
   }
   #myHeader .container {
       max-width: unset !important;
   }
-  .dropdown-toggle::after{
-    top: 0;
+  .mainside a span{
+    display: none;
+  }
+  .mainside a i{
+    color: $white;
+    display: inline-block;
+  }
+  .navbar .logo .navbar-item a{
+    position: relative;
+    top: 10px;
   }
 }
 @media only screen and (max-width: 1024px) {
@@ -4149,9 +4110,6 @@ img.img-rounded{
   .de_nav.text-left{
     margin-left: 0;
   }
-  .profile_avatar i{
-    margin-top: -35px;
-  }
 }
 @media only screen and (max-width: 600px) {
 
@@ -4161,4 +4119,26 @@ img.img-rounded{
 }
 @media only screen and (max-width: 378px) {
 
+}
+
+// ---------------------------Custom----------------------
+
+.logo-image {
+  height: 36px;
+  width: 36px !important;
+  margin: 0 !important;
+}
+.btn-main {
+  position: relative;
+}
+.wallet-btn {
+  padding: 8px 20px 8px 20px;
+  min-width: 210px;
+  color: #333;
+  background: white;
+}
+
+.wallet-btn:hover {
+  color: white;
+  background: #222;
 }

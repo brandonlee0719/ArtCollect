@@ -1,57 +1,111 @@
 import React from 'react';
-import SliderMainZero from '../components/SliderMainZero';
+import SliderMainParticle from '../components/SliderMainParticle';
 import FeatureBox from '../components/FeatureBox';
 import CarouselCollection from '../components/CarouselCollection';
-import ColumnNew from '../components/ColumnNew';
+import CarouselNew from '../components/CarouselNew';
 import AuthorList from '../components/authorList';
 import Footer from '../components/footer';
+import { createGlobalStyle } from 'styled-components';
 
-const hometwo= () => (
+const GlobalStyles = createGlobalStyle`
+  header#myHeader.navbar .search #quick_search{
+    background: rgba(255, 255, 255, .1);
+  }
+  header#myHeader .logo .d-block{
+    display: none !important;
+  }
+  header#myHeader .logo .d-none{
+    display: none !important;
+  }
+  header#myHeader .logo .d-3{
+    display: block !important;
+  }
+  footer.footer-light .subfooter span img.d-1{
+    display: none !important;
+  }
+  footer.footer-light .subfooter span img.d-3{
+    display: inline-block !important;
+  }
+  .de_countdown{
+    right: 10px;
+  }
+  .author_list_pp{
+    margin-left:0;
+  }
+  footer.footer-light .subfooter{
+    border-top: 1px solid rgba(255,255,255,.1);
+  }
+`;
+
+
+const homeone= () => (
   <div>
-      <section className="jumbotron no-bg bg-gray">
-         <SliderMainZero/>
+  <GlobalStyles />
+      <section className="jumbotron no-bg">
+         <SliderMainParticle/>
       </section>
 
-      <section className='container-fluid'>
-        <div className='row'>
-          <div className='col-lg-12'>
-            <div className='text-center'>
-              <h2>Hot Collections</h2>
-              <div className="small-border"></div>
+      <section className='container no-top no-bottom'>
+        <div className="row">
+            <div className="col-lg-2 col-sm-4 col-6 mb30">
+                <span className="box-url">
+                    <img src="./img/wallet/1.png" alt="" className="mb20"/>
+                    <h4>Metamask</h4>
+                </span>
             </div>
-          </div>
-        </div>
-        <div className='container'>
-          <div className='row'>
-            <div className='col-lg-12'>
-              <CarouselCollection/>
+
+            <div className="col-lg-2 col-sm-4 col-6 mb30">
+                <span className="box-url">
+                    <img src="./img/wallet/2.png" alt="" className="mb20"/>
+                    <h4>Bitski</h4>
+                </span>
+            </div>       
+
+            <div className="col-lg-2 col-sm-4 col-6 mb30">
+                <span className="box-url">
+                    <img src="./img/wallet/3.png" alt="" className="mb20"/>
+                    <h4>Fortmatic</h4>
+                </span>
+            </div>    
+
+            <div className="col-lg-2 col-sm-4 col-6 mb30">
+                <span className="box-url">
+                    <img src="./img/wallet/4.png" alt="" className="mb20"/>
+                    <h4>WalletConnect</h4>
+                </span>
             </div>
-          </div>
+
+            <div className="col-lg-2 col-sm-4 col-6 mb30">
+                <span className="box-url">
+                    <img src="./img/wallet/5.png" alt="" className="mb20"/>
+                    <h4>Coinbase Wallet</h4>
+                </span>
+            </div>
+
+            <div className="col-lg-2 col-sm-4 col-6 mb30">
+                <span className="box-url">
+                    <img src="./img/wallet/6.png" alt="" className="mb20"/>
+                    <h4>Arkane</h4>
+                </span>
+            </div>                                       
         </div>
       </section>
 
-      <section className='container-fluid bg-gray'>
-      <div className='container'>
+      <section className='container no-top no-bottom'>
         <div className='row'>
-          <div className='col-lg-12'>
-            <div className='text-center'>
-              <h2>Popular Items</h2>
-              <div className="small-border"></div>
-            </div>
+          <div className="spacer-double"></div>
+          <div className='col-lg-12 mb-2'>
+              <h2>New Items</h2>
           </div>
-        </div>
-       <ColumnNew/>
-      </div>
+        </div> 
+        <CarouselNew/>
       </section>
 
-
-      <section className='container'>
+      <section className='container no-top no-bottom'>
         <div className='row'>
+          <div className="spacer-double"></div>
           <div className='col-lg-12'>
-            <div className='text-center'>
               <h2>Top Sellers</h2>
-              <div className="small-border"></div>
-            </div>
           </div>
           <div className='col-lg-12'>
             <AuthorList/>
@@ -59,17 +113,25 @@ const hometwo= () => (
         </div>
       </section>
 
-      <section className='container-fluid bg-gray'>
+      <section className='container no-top no-bottom'>
         <div className='row'>
-          <div className='col-lg-12'>
-            <div className='text-center'>
-              <h2>Create and sell your NFTs</h2>
-              <div className="small-border"></div>
+          <div className="spacer-double"></div>
+          <div className='col-lg-12 mb-2'>
+              <h2>Hot Collections</h2>
+          </div>
+            <div className='col-lg-12'>
+              <CarouselCollection/>
             </div>
           </div>
-        </div>
-        <div className='container'>
-          <FeatureBox/>
+      </section>
+
+      <section className='container no-top'>
+        <div className='row'>
+            <div className="spacer-double"></div>
+            <div className='col-lg-12 mb-3'>
+              <h2>Create and Sell Now</h2>
+            </div>
+            <FeatureBox/>
         </div>
       </section>
 
@@ -77,4 +139,4 @@ const hometwo= () => (
 
   </div>
 );
-export default hometwo;
+export default homeone;

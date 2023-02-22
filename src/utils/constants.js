@@ -1,7 +1,6 @@
 import { ColorMode, Network, NetworkType } from "@airgap/beacon-sdk";
 import { BeaconWallet } from "@taquito/beacon-wallet";
 import { TezosToolkit } from "@taquito/taquito";
-import walletIcon from '../assets/logo.jpg';
 // Set the network (Mainnet is default)
 // export const TEZOS_COLLECT_NETWORK: Network = {
 //   type:

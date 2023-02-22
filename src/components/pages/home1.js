@@ -1,83 +1,63 @@
 import React from 'react';
-import Particle from '../components/Particle';
-import SliderMainParticle from '../components/SliderMainParticle';
-import FeatureBox from '../components/FeatureBox';
+import SliderCarousel from '../components/SliderCarousel';
 import CarouselCollection from '../components/CarouselCollection';
-import ColumnNew from '../components/ColumnNew';
+import CarouselNew from '../components/CarouselNew';
 import AuthorList from '../components/authorList';
 import Footer from '../components/footer';
 import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyles = createGlobalStyle`
-  header#myHeader.navbar.sticky.white {
-    background: #403f83;
-    border-bottom: solid 1px #403f83;
-  }
   header#myHeader.navbar .search #quick_search{
-    color: #fff;
     background: rgba(255, 255, 255, .1);
-  }
-  header#myHeader.navbar.white .btn, .navbar.white a, .navbar.sticky.white a{
-    color: #fff;
-  }
-  header#myHeader .dropdown-toggle::after{
-    color: #fff;
   }
   header#myHeader .logo .d-block{
     display: none !important;
   }
   header#myHeader .logo .d-none{
+    display: none !important;
+  }
+  header#myHeader .logo .d-3{
     display: block !important;
   }
-  @media only screen and (max-width: 1199px) {
-    .navbar{
-      background: #403f83;
-    }
-    .navbar .menu-line, .navbar .menu-line1, .navbar .menu-line2{
-      background: #fff;
-    }
-    .item-dropdown .dropdown a{
-      color: #fff !important;
-    }
+  footer.footer-light .subfooter span img.d-1{
+    display: none !important;
+  }
+  footer.footer-light .subfooter span img.d-3{
+    display: inline-block !important;
+  }
+  .de_countdown{
+    right: 10px;
+    color: #fff;
+  }
+  .author_list_pp{
+    margin-left:0;
+  }
+  footer.footer-light .subfooter{
+    border-top: 1px solid rgba(255,255,255,.1);
   }
 `;
 
-
-const homeone= () => (
+const homethree= () => (
   <div>
   <GlobalStyles />
-      <section className="jumbotron no-bg" style={{backgroundImage: `url(${'./img/background/2.jpg'})`}}>
-       <Particle/>
-         <SliderMainParticle/>
-      </section>
-
-      <section className='container'>
-        <div className='row'>
-          <div className='col-lg-12'>
-            <div className='text-center'>
-              <h2>Popular Items</h2>
-              <div className="small-border"></div>
-            </div>
-          </div>
-        </div>
-        
-        <ColumnNew/>
-        
-        
-      </section>
-
-      <section className='container-fluid bg-gray'>
-        <div className='row'>
-          <div className='col-lg-12'>
-            <div className='text-center'>
-              <h2>Hot Collections</h2>
-              <div className="small-border"></div>
-            </div>
-          </div>
-        </div>
-        <div className='container'>
+      <section className="jumbotron no-bg no-bottom">
+        <div className='container-fluid'>
           <div className='row'>
-            <div className='col-lg-12'>
+             <SliderCarousel/>
+          </div>
+        </div>
+      </section>
+
+      <section className='container no-bottom'>
+        <div className='row'>
+          <div className='col-lg-12 text-center'>
+              <h2 className='style-2'>Hot Collections</h2>
+              <div className="small-border"></div>
+          </div>
+        </div>
+        <div className='container no-top'>
+          <div className='row'>
+            <div className='col-lg-12 px-0'>
               <CarouselCollection/>
             </div>
           </div>
@@ -86,11 +66,19 @@ const homeone= () => (
 
       <section className='container'>
         <div className='row'>
-          <div className='col-lg-12'>
-            <div className='text-center'>
-              <h2>Top Sellers</h2>
+          <div className='col-lg-12 text-center'>
+              <h2 className='style-2'>New Items</h2>
               <div className="small-border"></div>
-            </div>
+          </div>
+        </div>
+       <CarouselNew/>
+      </section>
+
+      <section className='container no-top'>
+        <div className='row'>
+          <div className='col-lg-12 text-center'>
+              <h2 className='style-2'>Top Seller</h2>
+              <div className="small-border"></div>
           </div>
           <div className='col-lg-12'>
             <AuthorList/>
@@ -98,17 +86,57 @@ const homeone= () => (
         </div>
       </section>
 
-      <section className='container-fluid bg-gray'>
+      <section className='container no-top'>
         <div className='row'>
-          <div className='col-lg-12'>
-            <div className='text-center'>
-              <h2>Create and sell your NFTs</h2>
+          <div className='col-lg-12 text-center'>
+              <h2 className='style-2'>Browse Category</h2>
               <div className="small-border"></div>
-            </div>
           </div>
         </div>
-        <div className='container'>
-          <FeatureBox/>
+        <div className='container px-0'>
+          <div className="row">
+              <div className="col-lg-2 col-sm-4 col-6 mb30">
+                  <span className="box-url">
+                      <i className="fa fa-image"></i>
+                      <h4>Art</h4>
+                  </span>
+              </div>
+
+              <div className="col-lg-2 col-sm-4 col-6 mb30">
+                  <span className="box-url">
+                      <i className="fa fa-music"></i>
+                      <h4>Music</h4>
+                  </span>
+              </div>       
+
+              <div className="col-lg-2 col-sm-4 col-6 mb30">
+                  <span className="box-url">
+                      <i className="fa fa-search"></i>
+                      <h4>Domain Names</h4>
+                  </span>
+              </div>    
+
+              <div className="col-lg-2 col-sm-4 col-6 mb30">
+                  <span className="box-url">
+                      <i className="fa fa-globe"></i>
+                      <h4>Virtual Worlds</h4>
+                  </span>
+              </div>
+
+              <div className="col-lg-2 col-sm-4 col-6 mb30">
+                  <span className="box-url">
+                      <i className="fa fa-vcard"></i>
+                      <h4>Trading Cards</h4>
+                  </span>
+              </div>
+
+              <div className="col-lg-2 col-sm-4 col-6 mb30">
+                  <span className="box-url">
+                      <i className="fa fa-th"></i>
+                      <h4>Collectibles</h4>
+                  </span>
+              </div>                                       
+          </div>
         </div>
       </section>
 
@@ -116,4 +144,4 @@ const homeone= () => (
 
   </div>
 );
-export default homeone;
+export default homethree;

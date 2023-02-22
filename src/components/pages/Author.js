@@ -7,18 +7,8 @@ import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyles = createGlobalStyle`
   header#myHeader.navbar.white {
-    background: #fff;
-  }
-  @media only screen and (max-width: 1199px) {
-    .navbar{
-      background: #403f83;
-    }
-    .navbar .menu-line, .navbar .menu-line1, .navbar .menu-line2{
-      background: #111;
-    }
-    .item-dropdown .dropdown a{
-      color: #111 !important;
-    }
+    background: #FAF6F1;
+    border-bottom: solid 1px #ccc !important;
   }
 `;
 
@@ -57,13 +47,9 @@ return (
 <div>
 <GlobalStyles/>
 
-  <section id='profile_banner' className='jumbotron breadcumb no-bg' style={{backgroundImage: `url(${'./img/author_single/author_banner.jpg'})`}}>
-    <div className='mainbreadcumb'>
-    </div>
-  </section>
-
   <section className='container no-bottom'>
     <div className='row'>
+      <div className='spacer-double'></div>
       <div className="col-md-12">
          <div className="d_profile de-flex">
               <div className="de-flex-col">

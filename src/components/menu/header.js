@@ -1,15 +1,13 @@
 import React, { useEffect, useState } from "react";
 import Breakpoint, { BreakpointProvider, setDefaultBreakpoints } from "react-socks";
-// import { header } from 'react-bootstrap';
+import { header } from 'react-bootstrap';
 import { Link } from '@reach/router';
 import useOnclickOutside from "react-cool-onclickoutside";
-
 import {
   // Tezos,
   TEZOS_COLLECT_NETWORK,
   TEZOS_COLLECT_WALLET,
 } from "../../utils/constants";
-
 
 setDefaultBreakpoints([
   { xs: 0 },
@@ -148,7 +146,7 @@ const Header = function () {
                 <div className="d-flex align-items-center">
                   <img
                     src="./img/logo.jpg"
-                    className="img-fluid d-block logo-image"
+                    className="img-fluid logo-image"
                     alt="#"
                   />
                   <div className="ms-3 fs-4">Art Collect</div>
@@ -177,8 +175,7 @@ const Header = function () {
                           <div className="dropdown" onClick={closeMenu}>
                             <NavLink to="/" onClick={() => btn_icon(!showmenu)}>Homepage</NavLink>
                             <NavLink to="/home1" onClick={() => btn_icon(!showmenu)}>Homepage 1</NavLink>
-                            <NavLink to="/home2" onClick={() => btn_icon(!showmenu)}>Homepage 2</NavLink>
-                            <NavLink to="/home3" onClick={() => btn_icon(!showmenu)}>Homepage 3</NavLink>
+                            <NavLink to="/home2" onClick={() => btn_icon(!showmenu)}>Homepage 1</NavLink>
                           </div>
                         </div>
                       )}
@@ -219,8 +216,6 @@ const Header = function () {
                             <NavLink to="/Author" onClick={() => btn_icon(!showmenu)}>Author</NavLink>
                             <NavLink to="/wallet" onClick={() => btn_icon(!showmenu)}>Wallet</NavLink>
                             <NavLink to="/create" onClick={() => btn_icon(!showmenu)}>Create</NavLink>
-                            <NavLink to="/create2" onClick={() => btn_icon(!showmenu)}>Create 2</NavLink>
-                            <NavLink to="/createOptions" onClick={() => btn_icon(!showmenu)}>Create options</NavLink>
                             <NavLink to="/news" onClick={() => btn_icon(!showmenu)}>News</NavLink>
                             <NavLink to="/works" onClick={() => btn_icon(!showmenu)}>Gallery</NavLink>
                             <NavLink to="/login" onClick={() => btn_icon(!showmenu)}>login</NavLink>
@@ -278,7 +273,6 @@ const Header = function () {
                             <NavLink to="/">Homepage</NavLink>
                             <NavLink to="/home1">Homepage 1</NavLink>
                             <NavLink to="/home2">Homepage 2</NavLink>
-                            <NavLink to="/home3">Homepage 3</NavLink>
                           </div>
                         </div>
                       )}
@@ -321,8 +315,6 @@ const Header = function () {
                             <NavLink to="/Author">Author</NavLink>
                             <NavLink to="/wallet">Wallet</NavLink>
                             <NavLink to="/create">Create</NavLink>
-                            <NavLink to="/create2">Create 2</NavLink>
-                            <NavLink to="/createOptions">Create Option</NavLink>
                             <NavLink to="/news">News</NavLink>
                             <NavLink to="/works">Gallery</NavLink>
                             <NavLink to="/login">login</NavLink>
@@ -383,6 +375,7 @@ const Header = function () {
               </div>
               : <div className="btn-main" onClick={onConnectWallet}>Connect Wallet</div>}
           </div>
+
         </div>
 
         <button className="nav-icon" onClick={() => btn_icon(!showmenu)}>
