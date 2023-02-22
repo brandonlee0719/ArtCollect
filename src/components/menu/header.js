@@ -38,8 +38,9 @@ const Header = function () {
   const [openMenu1, setOpenMenu1] = React.useState(false);
   const [openMenu2, setOpenMenu2] = React.useState(false);
   const [openMenu3, setOpenMenu3] = React.useState(false);
+  const [openAddress, setOpenAddress] = React.useState(false);
   const [activeAddress, setActiveAddress] = React.useState("");
-  
+
   const handleBtnClick = () => {
     setOpenMenu(!openMenu);
   };
@@ -104,6 +105,16 @@ const Header = function () {
     setActiveAddress("");
     await TEZOS_COLLECT_WALLET.clearActiveAccount();
   };
+
+  const handleActiveWallet = () => {
+    setOpenAddress(!openAddress)
+  }
+  const closeAddress = () => {
+    setOpenAddress(false);
+  }
+  const walletRef = useOnclickOutside(() => {
+    closeAddress();
+  });
 
   const [showmenu, btn_icon] = useState(false);
   useEffect(() => {
@@ -357,12 +368,21 @@ const Header = function () {
             </Breakpoint>
           </BreakpointProvider>
 
-          <div className='mainside'>
+          <div ref={walletRef} className='mainside'>
             {activeAddress !== ""
-              ? <div className="btn-main" onClick={onDisconnectWallet}>{activeAddress.slice(0, 5)}...{activeAddress.slice(activeAddress.length-5, activeAddress.length)}</div>
+              ? <div className="btn-main" onClick={handleActiveWallet}>
+                {activeAddress.slice(0, 5)}...{activeAddress.slice(activeAddress.length - 5, activeAddress.length)}
+                {openAddress && (
+                  <div className='item-dropdown'>
+                    <div className="dropdown" onClick={closeMenu3}>
+                      <div className="wallet-btn">Profile</div>
+                      <div className="wallet-btn" onClick={onDisconnectWallet}>Disconnect</div>
+                    </div>
+                  </div>
+                )}
+              </div>
               : <div className="btn-main" onClick={onConnectWallet}>Connect Wallet</div>}
           </div>
-
         </div>
 
         <button className="nav-icon" onClick={() => btn_icon(!showmenu)}>
