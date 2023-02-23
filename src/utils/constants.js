@@ -15,7 +15,7 @@ const TEZOS_COLLECT_RPC_URL =
     : MAINNET_RPC_URL;
 export const Tezos = new TezosToolkit(TEZOS_COLLECT_RPC_URL);
 export const NFT_STORAGE_KEY =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWQ6ZXRocjoweDIxM2MwOGZEQjVCMDNGQWRkYzVEYWE1ODk5ZkY4NjY5YWE2ZGZBRDAiLCJpc3MiOiJuZnQtc3RvcmFnZSIsImlhdCI6MTY3MDUwODU3OTgwNCwibmFtZSI6IkdlbmVzeSJ9.ZTjxdK3K9Rr14USOXMCcrOkvBCuyVi6MKlI7Uhv4ufg";
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWQ6ZXRocjoweDRmODc5OTVlNWExNzgxYTBDRDkxOTBCMGFmOTg4OTc0N0I3MTBhOTkiLCJpc3MiOiJuZnQtc3RvcmFnZSIsImlhdCI6MTY3NzE0OTc3MDc1MiwibmFtZSI6IkFydENvbGxlY3QifQ.PLt3VASll7EXdxqshzVZDtA3lW7Zr5aDsGpjhBI_Qf8";
 // Create a new DAppClient instance
 export const TEZOS_COLLECT_WALLET = new BeaconWallet({
   name: "Art Collect",
@@ -40,7 +40,7 @@ const MARKETPLACE_ADDRESSES = {
 };
 
 const NFT_ADDRESSES = {
-  ghostnet: "KT18yToJwQVHvdc4NKFji1Zdc8p5tD9LyckV",
+  ghostnet: "KT1Q3pTRa3s1ZXUMRaHUwqMYdDT7iWL9AXYx",
   kathmandunet: "",
   mainnet: "",
   mondaynet: "",
