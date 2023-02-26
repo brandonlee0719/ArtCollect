@@ -322,7 +322,10 @@ const Header = function () {
                   </div>
                 )}
               </div>
-              : <div className="btn-main" onClick={onConnectWallet}>Connect Wallet</div>}
+              : <div className="btn-main" onClick={onConnectWallet}>
+                <i className="icon_wallet_alt"></i>
+                <span>Connect Wallet</span>
+              </div>}
           </div>
 
         </div>
