@@ -86,8 +86,8 @@ return (
               <div className="items_filter">
                 <ul className="de_nav text-left">
                     <li id='Mainbtn' className="active"><span onClick={handleBtnClick}>On Sale</span></li>
-                    <li id='Mainbtn1' className=""><span onClick={handleBtnClick1}>Created</span></li>
-                    <li id='Mainbtn2' className=""><span onClick={handleBtnClick2}>Liked</span></li>
+                    <li id='Mainbtn1' className=""><span onClick={handleBtnClick1}>Sold</span></li>
+                    <li id='Mainbtn2' className=""><span onClick={handleBtnClick2}>Minted</span></li>
                 </ul>
             </div>
           </div>
