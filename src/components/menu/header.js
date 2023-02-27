@@ -265,7 +265,7 @@ const Header = function () {
                 {openAddress && (
                   <div className='item-dropdown'>
                     <div className="dropdown" onClick={closeMenu3}>
-                      <div className="wallet-btn">Profile</div>
+                      <NavLink to="/create">Profile</NavLink>
                       <div className="wallet-btn" onClick={onDisconnectWallet}>Disconnect</div>
                     </div>
                   </div>

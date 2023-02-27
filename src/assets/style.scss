@@ -1241,7 +1241,7 @@ p.lead {
     a {
       text-align: center;
       color: #fff;
-      background: $color;
+      // background: $color;
       letter-spacing: normal;
       outline: 0;
       font-weight: 800;
@@ -1253,14 +1253,14 @@ p.lead {
       box-shadow: 6px 6px 0px 0px rgba(0, 0, 0, 0.0);
       transition: all 0.3s ease;
 
-      &:hover {
-        color: $color;
-        background: $white;
-        border: solid 1px #888;
-        box-shadow: 2px 2px 20px 0px #FF343F;
-        transition: all 0.3s ease;
-        box-shadow: 6px 6px 0px 0px rgba(0, 0, 0, 0.09);
-      }
+      // &:hover {
+      //   color: $color;
+      //   background: $white;
+      //   border: solid 1px #888;
+      //   box-shadow: 2px 2px 20px 0px #FF343F;
+      //   transition: all 0.3s ease;
+      //   box-shadow: 6px 6px 0px 0px rgba(0, 0, 0, 0.09);
+      // }
     }
   }
 }
