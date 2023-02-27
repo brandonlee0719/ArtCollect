@@ -144,7 +144,7 @@ const Header = function () {
               <NavLink to="/">
                 <div className="d-flex align-items-center">
                   <img
-                    src="./img/logo.jpg"
+                    src="./img/logo.png"
                     className="img-fluid logo-image"
                     alt="#"
                   />
@@ -188,19 +188,22 @@ const Header = function () {
                     </div>
                   </div>
                   <div className='navbar-item'>
-                    <NavLink to="/" onClick={() => btn_icon(!showmenu)}>
+                    <NavLink to="/activity" onClick={() => btn_icon(!showmenu)}>
                       Activity
                     </NavLink>
                   </div>
                   <div className='navbar-item'>
-                    <NavLink to="/" onClick={() => btn_icon(!showmenu)}>
+                    <NavLink to="/rangking" onClick={() => btn_icon(!showmenu)}>
                       Leaderboard
                     </NavLink>
                   </div>
                   <div className='navbar-item'>
-                    <NavLink to="/" onClick={() => btn_icon(!showmenu)}>
+                    <a to="/" onClick={() => {
+                      btn_icon(!showmenu);
+                      window.open("https://art-collecting.com/blogs.htm", "_blank");
+                    }}>
                       Blog
-                    </NavLink>
+                    </a>
                   </div>
                 </div>
               }
@@ -236,22 +239,22 @@ const Header = function () {
                   </div>
                 </div>
                 <div className='navbar-item'>
-                  <NavLink to="/">
+                  <NavLink to="/activity">
                     Activity
                     <span className='lines'></span>
                   </NavLink>
                 </div>
                 <div className='navbar-item'>
-                  <NavLink to="/">
+                  <NavLink to="/rangking">
                     Leaderboard
                     <span className='lines'></span>
                   </NavLink>
                 </div>
                 <div className='navbar-item'>
-                  <NavLink to="/">
+                  <a onClick={() => window.open("https://art-collecting.com/blogs.htm", "_blank")}>
                     Blog
                     <span className='lines'></span>
-                  </NavLink>
+                  </a>
                 </div>
               </div>
             </Breakpoint>
@@ -265,7 +268,7 @@ const Header = function () {
                 {openAddress && (
                   <div className='item-dropdown'>
                     <div className="dropdown" onClick={closeMenu3}>
-                      <NavLink to="/create">Profile</NavLink>
+                      <NavLink to="/Author">Profile</NavLink>
                       <div className="wallet-btn" onClick={onDisconnectWallet}>Disconnect</div>
                     </div>
                   </div>
