@@ -12,7 +12,7 @@ export default class Createpage extends Component {
       title: "",
       description: "",
       price: "",
-      royalties: "5"
+      royalties: ""
     };
   }
 
