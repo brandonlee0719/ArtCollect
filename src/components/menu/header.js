@@ -163,7 +163,7 @@ const Header = function () {
               {showmenu &&
                 <div className='menu'>
                   <div className='navbar-item'>
-                    <NavLink to="/">
+                    <NavLink to="/" onClick={() => btn_icon(!showmenu)}>
                       Home
                     </NavLink>
                   </div>
@@ -177,28 +177,28 @@ const Header = function () {
                       {openMenu1 && (
                         <div className='item-dropdown'>
                           <div className="dropdown" onClick={closeMenu1}>
-                            <NavLink to="/explore">Categories</NavLink>
-                            <NavLink to="/explore2">Image</NavLink>
-                            <NavLink to="/rangking">Video</NavLink>
-                            <NavLink to="/colection">Audio</NavLink>
-                            <NavLink to="/ItemDetail">Gif</NavLink>
+                            <NavLink to="/explore" onClick={() => btn_icon(!showmenu)}>Categories</NavLink>
+                            <NavLink to="/explore2" onClick={() => btn_icon(!showmenu)}>Image</NavLink>
+                            <NavLink to="/rangking" onClick={() => btn_icon(!showmenu)}>Video</NavLink>
+                            <NavLink to="/colection" onClick={() => btn_icon(!showmenu)}>Audio</NavLink>
+                            <NavLink to="/ItemDetail" onClick={() => btn_icon(!showmenu)}>Gif</NavLink>
                           </div>
                         </div>
                       )}
                     </div>
                   </div>
                   <div className='navbar-item'>
-                    <NavLink to="/">
+                    <NavLink to="/" onClick={() => btn_icon(!showmenu)}>
                       Activity
                     </NavLink>
                   </div>
                   <div className='navbar-item'>
-                    <NavLink to="/">
+                    <NavLink to="/" onClick={() => btn_icon(!showmenu)}>
                       Leaderboard
                     </NavLink>
                   </div>
                   <div className='navbar-item'>
-                    <NavLink to="/">
+                    <NavLink to="/" onClick={() => btn_icon(!showmenu)}>
                       Blog
                     </NavLink>
                   </div>
