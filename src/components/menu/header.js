@@ -227,10 +227,10 @@ const Header = function () {
                         <div className='item-dropdown'>
                           <div className="dropdown" onClick={closeMenu1}>
                             <NavLink to="/explore">Categories</NavLink>
-                            <NavLink to="/explore2">Image</NavLink>
-                            <NavLink to="/rangking">Video</NavLink>
-                            <NavLink to="/colection">Audio</NavLink>
-                            <NavLink to="/ItemDetail">Gif</NavLink>
+                            <NavLink to="/explore">Image</NavLink>
+                            <NavLink to="/explore">Video</NavLink>
+                            <NavLink to="/explore">Audio</NavLink>
+                            <NavLink to="/explore">Gif</NavLink>
                           </div>
                         </div>
                       )}
