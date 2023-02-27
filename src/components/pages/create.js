@@ -62,7 +62,7 @@ export default class Createpage extends Component {
             <div className='container'>
               <div className='row m-10-hor'>
                 <div className='col-12'>
-                  <h1 className='text-center'>Create</h1>
+                  <h1 className='text-center'>Create NFT</h1>
                 </div>
               </div>
             </div>

@@ -269,6 +269,7 @@ const Header = function () {
                   <div className='item-dropdown'>
                     <div className="dropdown" onClick={closeMenu3}>
                       <NavLink to="/Author">Profile</NavLink>
+                      <NavLink to="/create">Create NFT</NavLink>
                       <div className="wallet-btn" onClick={onDisconnectWallet}>Disconnect</div>
                     </div>
                   </div>
