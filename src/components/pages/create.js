@@ -142,7 +142,7 @@ export default class Createpage extends Component {
                     <h4>{title}</h4>
                   </span>
                   <div className="nft__item_price">
-                    {price === "" ? 0 : price} ETH<span>1/20</span>
+                    {price === "" ? 0 : price} XTZ<span>1/20</span>
                   </div>
                   <div className="nft__item_action">
                     <span>Place a bid</span>
