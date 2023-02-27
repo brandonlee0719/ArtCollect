@@ -13,7 +13,7 @@ export default class Responsive extends Component {
         authorImg: "./img/author/author-1.jpg",
         previewImg: "./img/items/static-1.jpg",
         title: "Pinky Ocean",
-        price: "0.08 ETH",
+        price: "0.08 XTZ",
         bid: "1/20",
         likes: 50
     },
@@ -25,7 +25,7 @@ export default class Responsive extends Component {
         authorImg: "./img/author/author-10.jpg",
         previewImg: "./img/items/static-2.jpg",
         title: "Deep Sea Phantasy",
-        price: "0.06 ETH",
+        price: "0.06 XTZ",
         bid: "1/22",
         likes: 80
     },
@@ -37,7 +37,7 @@ export default class Responsive extends Component {
         authorImg: "./img/author/author-11.jpg",
         previewImg: "./img/items/static-3.jpg",
         title: "Rainbow Style",
-        price: "0.05 ETH",
+        price: "0.05 XTZ",
         bid: "1/11",
         likes: 97
     },
@@ -49,7 +49,7 @@ export default class Responsive extends Component {
         authorImg: "./img/author/author-12.jpg",
         previewImg: "./img/items/static-4.jpg",
         title: "Two Tigers",
-        price: "0.08 ETH",
+        price: "0.08 XTZ",
         bid: "1/20",
         likes: 50
     },
@@ -61,7 +61,7 @@ export default class Responsive extends Component {
         authorImg: "./img/author/author-9.jpg",
         previewImg: "./img/items/anim-4.webp",
         title: "The Truth",
-        price: "0.08 ETH",
+        price: "0.08 XTZ",
         bid: "1/20",
         likes: 50
     },
@@ -73,7 +73,7 @@ export default class Responsive extends Component {
         authorImg: "./img/author/author-2.jpg",
         previewImg: "./img/items/anim-2.webp",
         title: "Running Puppets",
-        price: "0.08 ETH",
+        price: "0.08 XTZ",
         bid: "1/20",
         likes: 50
     },
@@ -85,7 +85,7 @@ export default class Responsive extends Component {
         authorImg: "./img/author/author-3.jpg",
         previewImg: "./img/items/anim-1.webp",
         title: "USA Wordmation",
-        price: "0.08 ETH",
+        price: "0.08 XTZ",
         bid: "1/20",
         likes: 50
     },
@@ -97,7 +97,7 @@ export default class Responsive extends Component {
         authorImg: "./img/author/author-4.jpg",
         previewImg: "./img/items/anim-5.webp",
         title: "Loop Donut",
-        price: "0.08 ETH",
+        price: "0.08 XTZ",
         bid: "1/20",
         likes: 50
     },
@@ -109,7 +109,7 @@ export default class Responsive extends Component {
         authorImg: "./img/author/author-5.jpg",
         previewImg: "./img/items/anim-3.webp",
         title: "Lady Copter",
-        price: "0.08 ETH",
+        price: "0.08 XTZ",
         bid: "1/20",
         likes: 50
     },
@@ -121,7 +121,7 @@ export default class Responsive extends Component {
         authorImg: "./img/author/author-7.jpg",
         previewImg: "./img/items/static-5.jpg",
         title: "Purple Planet",
-        price: "0.08 ETH",
+        price: "0.08 XTZ",
         bid: "1/20",
         likes: 50
     },
@@ -133,7 +133,7 @@ export default class Responsive extends Component {
         authorImg: "./img/author/author-6.jpg",
         previewImg: "./img/items/anim-6.webp",
         title: "Oh Yeah!",
-        price: "0.08 ETH",
+        price: "0.08 XTZ",
         bid: "1/20",
         likes: 50
     },
@@ -145,7 +145,7 @@ export default class Responsive extends Component {
         authorImg: "./img/author/author-8.jpg",
         previewImg: "./img/items/anim-7.webp",
         title: "This is Our Story",
-        price: "0.08 ETH",
+        price: "0.08 XTZ",
         bid: "1/20",
         likes: 50
     },
@@ -157,7 +157,7 @@ export default class Responsive extends Component {
         authorImg: "./img/author/author-9.jpg",
         previewImg: "./img/items/static-6.jpg",
         title: "Pixel World",
-        price: "0.08 ETH",
+        price: "0.08 XTZ",
         bid: "1/20",
         likes: 50
     },
@@ -169,7 +169,7 @@ export default class Responsive extends Component {
         authorImg: "./img/author/author-12.jpg",
         previewImg: "./img/items/anim-8.webp",
         title: "I Believe I Can Fly",
-        price: "0.08 ETH",
+        price: "0.08 XTZ",
         bid: "1/20",
         likes: 50
     }]

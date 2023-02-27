@@ -102,7 +102,7 @@ export default class Createpage extends Component {
                   <div className="spacer-10"></div>
 
                   <h5>Price</h5>
-                  <input type="text" name="item_price" id="item_price" className="form-control" placeholder="enter price for one item (ETH)" value={price} onChange={this.onChangePrice} />
+                  <input type="text" name="item_price" id="item_price" className="form-control" placeholder="enter price for one item (XTZ)" value={price} onChange={this.onChangePrice} />
 
                   <div className="spacer-10"></div>
 

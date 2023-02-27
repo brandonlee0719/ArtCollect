@@ -129,7 +129,7 @@ return (
           <img className="lazy" src="./img/items/thumbnail-4.jpg" alt=""/>
           <div className="act_list_text">
               <h4>Two Tigers</h4>
-             1 edition purchased by <span className='color'>Jimmy Wright</span> for 0.02 ETH 
+             1 edition purchased by <span className='color'>Jimmy Wright</span> for 0.02 XTZ 
               <span className="act_list_date">
                   10/07/2021, 12:40
               </span>
@@ -149,7 +149,7 @@ return (
           <img className="lazy" src="./img/items/thumbnail-5.jpg" alt=""/>
           <div className="act_list_text">
               <h4>Purple Planet</h4>
-             <span className='color'>Franklin Greer</span> offered 0.002 ETH
+             <span className='color'>Franklin Greer</span> offered 0.002 XTZ
               <span className="act_list_date">
                   10/07/2021, 12:40
               </span>
@@ -209,7 +209,7 @@ return (
           <img className="lazy" src="./img/items/thumbnail-4.jpg" alt=""/>
           <div className="act_list_text">
               <h4>Two Tigers</h4>
-             1 edition purchased by <span className='color'>Jimmy Wright</span> for 0.02 ETH 
+             1 edition purchased by <span className='color'>Jimmy Wright</span> for 0.02 XTZ 
               <span className="act_list_date">
                   10/07/2021, 12:40
               </span>
@@ -249,7 +249,7 @@ return (
             <img className="lazy" src="./img/items/thumbnail-5.jpg" alt=""/>
             <div className="act_list_text">
                 <h4>Purple Planet</h4>
-               <span className='color'>Franklin Greer</span> offered 0.002 ETH
+               <span className='color'>Franklin Greer</span> offered 0.002 XTZ
                 <span className="act_list_date">
                     10/07/2021, 12:40
                 </span>
