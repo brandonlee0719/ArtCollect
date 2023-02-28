@@ -364,7 +364,7 @@ const Header = function () {
                       <div className="d-wallet">
                         <h4>My Wallet</h4>
                         <span id="wallet" className="d-wallet-address">{activeAddress}</span>
-                        <button id="btn_copy" title="Copy Text">Copy</button>
+                        <button id="btn_copy" title="Copy Text" onClick={() => navigator.clipboard.writeText(activeAddress)}>Copy</button>
                       </div>
                       <div className="d-line"></div>
                       <ul className="de-submenu-profile">
