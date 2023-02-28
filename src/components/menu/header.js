@@ -3,7 +3,7 @@ import Breakpoint, { BreakpointProvider, setDefaultBreakpoints } from "react-soc
 import { Link } from '@reach/router';
 import useOnclickOutside from "react-cool-onclickoutside";
 import {
-  // Tezos,
+  Tezos,
   TEZOS_COLLECT_NETWORK,
   TEZOS_COLLECT_WALLET,
 } from "../../utils/constants";
@@ -32,70 +32,83 @@ const NavLink = props => (
 const Header = function () {
 
   const [openMenu, setOpenMenu] = React.useState(false);
-  const [openMenu1, setOpenMenu1] = React.useState(false);
-  const [openMenu2, setOpenMenu2] = React.useState(false);
-  const [openMenu3, setOpenMenu3] = React.useState(false);
+  // const [openMenu1, setOpenMenu1] = React.useState(false);
+  // const [openMenu2, setOpenMenu2] = React.useState(false);
+  // const [openMenu3, setOpenMenu3] = React.useState(false);
   const [openAddress, setOpenAddress] = React.useState(false);
   const [activeAddress, setActiveAddress] = React.useState("");
+  const [balance, setBalance] = useState(0);
 
   const handleBtnClick = () => {
     setOpenMenu(!openMenu);
   };
-  const handleBtnClick1 = () => {
-    setOpenMenu1(!openMenu1);
-  };
-  const handleBtnClick2 = () => {
-    setOpenMenu2(!openMenu2);
-  };
-  const handleBtnClick3 = () => {
-    setOpenMenu3(!openMenu3);
-  };
   const closeMenu = () => {
     setOpenMenu(false);
-  };
-  const closeMenu1 = () => {
-    setOpenMenu1(false);
-  };
-  const closeMenu2 = () => {
-    setOpenMenu2(false);
-  };
-  const closeMenu3 = () => {
-    setOpenMenu3(false);
   };
   const ref = useOnclickOutside(() => {
     closeMenu();
   });
-  const ref1 = useOnclickOutside(() => {
-    closeMenu1();
+  const [showpop, btn_icon_pop] = useState(false);
+  const [shownot, btn_icon_not] = useState(false);
+  const closePop = () => {
+    btn_icon_pop(false);
+  };
+  const closeNot = () => {
+    btn_icon_not(false);
+  };
+  const refpop = useOnclickOutside(() => {
+    closePop();
   });
-  const ref2 = useOnclickOutside(() => {
-    closeMenu2();
+  const refpopnot = useOnclickOutside(() => {
+    closeNot();
   });
-  const ref3 = useOnclickOutside(() => {
-    closeMenu3();
-  });
+  // const onConnectWallet = async () => {
+  //   await TEZOS_COLLECT_WALLET.requestPermissions({
+  //     network: TEZOS_COLLECT_NETWORK,
+  //   });
+  //   const _activeAddress = await TEZOS_COLLECT_WALLET.getPKH();
+  //   setActiveAddress(_activeAddress);
+
+  //   let account = await TEZOS_COLLECT_WALLET.client.getActiveAccount();
+  //   console.log(account)
+  //   // try {
+  //   //   let res = await fetchProfile(_activeAddress);
+  //   //   console.log("res", res);
+  //   //   if (res?.wallet) {
+  //   //     if (res?.artist) {
+  //   //       navigate(`/profile/${_activeAddress}/created`);
+  //   //     } else {
+  //   //       navigate(`/profile/${_activeAddress}/owned`);
+  //   //     }
+  //   //   } else {
+  //   //     navigate("/signup");
+  //   //   }
+  //   // } catch (error) {
+  //   //   console.log(error);
+  //   // }
+  // };
 
   const onConnectWallet = async () => {
-    await TEZOS_COLLECT_WALLET.requestPermissions({
-      network: TEZOS_COLLECT_NETWORK,
-    });
-    const _activeAddress = await TEZOS_COLLECT_WALLET.getPKH();
-    setActiveAddress(_activeAddress);
-    // try {
-    //   let res = await fetchProfile(_activeAddress);
-    //   console.log("res", res);
-    //   if (res?.wallet) {
-    //     if (res?.artist) {
-    //       navigate(`/profile/${_activeAddress}/created`);
-    //     } else {
-    //       navigate(`/profile/${_activeAddress}/owned`);
-    //     }
-    //   } else {
-    //     navigate("/signup");
-    //   }
-    // } catch (error) {
-    //   console.log(error);
-    // }
+    try {
+      await TEZOS_COLLECT_WALLET.requestPermissions({
+        network: TEZOS_COLLECT_NETWORK,
+      });
+      const _activeAddress = await TEZOS_COLLECT_WALLET.getPKH();
+      setActiveAddress(_activeAddress);
+      await getWalletBalance(_activeAddress);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const getWalletBalance = async (address) => {
+    try {
+      const balance = await Tezos.tz.getBalance(address);
+      console.log(`Wallet balance: ${balance.toNumber() / 1000000} ꜩ`);
+      setBalance(balance.toNumber() / 1000000);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const onDisconnectWallet = async () => {
@@ -168,15 +181,15 @@ const Header = function () {
                     </NavLink>
                   </div>
                   <div className='navbar-item'>
-                    <div ref={ref1}>
+                    <div ref={ref}>
                       <div className="dropdown-custom dropdown-toggle btn"
-                        onClick={handleBtnClick1}
+                        onClick={handleBtnClick}
                       >
                         Drops
                       </div>
-                      {openMenu1 && (
+                      {openMenu && (
                         <div className='item-dropdown'>
-                          <div className="dropdown" onClick={closeMenu1}>
+                          <div className="dropdown" onClick={closeMenu}>
                             <NavLink to="/explore" onClick={() => btn_icon(!showmenu)}>Categories</NavLink>
                             <NavLink to="/explore2" onClick={() => btn_icon(!showmenu)}>Image</NavLink>
                             <NavLink to="/rangking" onClick={() => btn_icon(!showmenu)}>Video</NavLink>
@@ -198,7 +211,7 @@ const Header = function () {
                     </NavLink>
                   </div>
                   <div className='navbar-item'>
-                    <a to="/" onClick={() => {
+                    <a onClick={() => {
                       btn_icon(!showmenu);
                       window.open("https://art-collecting.com/blogs.htm", "_blank");
                     }}>
@@ -218,14 +231,14 @@ const Header = function () {
                   </NavLink>
                 </div>
                 <div className='navbar-item'>
-                  <div ref={ref1}>
+                  <div ref={ref}>
                     <div className="dropdown-custom dropdown-toggle btn"
-                      onMouseEnter={handleBtnClick1} onMouseLeave={closeMenu1}>
+                      onMouseEnter={handleBtnClick} onMouseLeave={closeMenu}>
                       Drops
                       <span className='lines'></span>
-                      {openMenu1 && (
+                      {openMenu && (
                         <div className='item-dropdown'>
-                          <div className="dropdown" onClick={closeMenu1}>
+                          <div className="dropdown" onClick={closeMenu}>
                             <NavLink to="/explore">Categories</NavLink>
                             <NavLink to="/explore">Image</NavLink>
                             <NavLink to="/explore">Video</NavLink>
@@ -262,18 +275,118 @@ const Header = function () {
 
           <div ref={walletRef} className='mainside'>
             {activeAddress !== ""
-              ? <div className="btn-main" onClick={handleActiveWallet}>
-                <i className="icon_wallet_alt"></i>
-                <span>{activeAddress.slice(0, 5)}...{activeAddress.slice(activeAddress.length - 5, activeAddress.length)}</span>
-                {openAddress && (
-                  <div className='item-dropdown'>
-                    <div className="dropdown" onClick={closeMenu3}>
-                      <NavLink to="/Author">Profile</NavLink>
-                      <NavLink to="/create">Create NFT</NavLink>
-                      <div className="wallet-btn" onClick={onDisconnectWallet}>Disconnect</div>
+              // ? <div className="btn-main" onClick={handleActiveWallet}>
+              //   <i className="icon_wallet_alt"></i>
+              //   <span>{activeAddress.slice(0, 5)}...{activeAddress.slice(activeAddress.length - 5, activeAddress.length)}</span>
+              //   {openAddress && (
+              //     <div className='item-dropdown'>
+              //       <div className="dropdown" onClick={closeMenu}>
+              //         <NavLink to="/Author">Profile</NavLink>
+              //         <NavLink to="/create">Create NFT</NavLink>
+              //         <div className="wallet-btn" onClick={onDisconnectWallet}>Disconnect</div>
+              //       </div>
+              //     </div>
+              //   )}
+              // </div>
+              ? <div className="logout">
+                <NavLink to="/create">Create</NavLink>
+                <div id="de-click-menu-notification" className="de-menu-notification" onClick={() => btn_icon_not(!shownot)} ref={refpopnot}>
+                  <div className="d-count">8</div>
+                  <i className="fa fa-bell"></i>
+                  {shownot &&
+                    <div className="popshow">
+                      <div className="de-flex">
+                        <h4>Notifications</h4>
+                        <span className="viewaall">Show all</span>
+                      </div>
+                      <ul>
+                        <li>
+                          <div className="mainnot">
+                            <img className="lazy" src="../../img/author/author-2.jpg" alt="" />
+                            <div className="d-desc">
+                              <span className="d-name"><b>Mamie Barnett</b> started following you</span>
+                              <span className="d-time">1 hour ago</span>
+                            </div>
+                          </div>
+                        </li>
+                        <li>
+                          <div className="mainnot">
+                            <img className="lazy" src="../../img/author/author-3.jpg" alt="" />
+                            <div className="d-desc">
+                              <span className="d-name"><b>Nicholas Daniels</b> liked your item</span>
+                              <span className="d-time">2 hours ago</span>
+                            </div>
+                          </div>
+                        </li>
+                        <li>
+                          <div className="mainnot">
+                            <img className="lazy" src="../../img/author/author-4.jpg" alt="" />
+                            <div className="d-desc">
+                              <span className="d-name"><b>Lori Hart</b> started following you</span>
+                              <span className="d-time">18 hours ago</span>
+                            </div>
+                          </div>
+                        </li>
+                        <li>
+                          <div className="mainnot">
+                            <img className="lazy" src="../../img/author/author-5.jpg" alt="" />
+                            <div className="d-desc">
+                              <span className="d-name"><b>Jimmy Wright</b> liked your item</span>
+                              <span className="d-time">1 day ago</span>
+                            </div>
+                          </div>
+                        </li>
+                        <li>
+                          <div className="mainnot">
+                            <img className="lazy" src="../../img/author/author-6.jpg" alt="" />
+                            <div className="d-desc">
+                              <span className="d-name"><b>Karla Sharp</b> started following you</span>
+                              <span className="d-time">3 days ago</span>
+                            </div>
+                          </div>
+                        </li>
+                      </ul>
                     </div>
-                  </div>
-                )}
+                  }
+                </div>
+                <div id="de-click-menu-profile" className="de-menu-profile" onClick={() => btn_icon_pop(!showpop)} ref={refpop}>
+                  <img src="../../img/author_single/author_thumbnail.jpg" alt="" />
+                  {showpop &&
+                    <div className="popshow">
+                      <div className="d-name">
+                        <h4>Monica Lucas</h4>
+                        <span className="name" onClick={() => window.open("", "_self")}>Set display name</span>
+                      </div>
+                      <div className="d-balance">
+                        <h4>Balance</h4>
+                        {balance} XTZ
+                      </div>
+                      <div className="d-wallet">
+                        <h4>My Wallet</h4>
+                        <span id="wallet" className="d-wallet-address">{activeAddress}</span>
+                        <button id="btn_copy" title="Copy Text">Copy</button>
+                      </div>
+                      <div className="d-line"></div>
+                      <ul className="de-submenu-profile">
+                        <li>
+                          <span>
+                            <i className="fa fa-user"></i><NavLink to="/Author">My Profile</NavLink>
+                          </span>
+                        </li>
+                        <li>
+                          <span>
+                            <i className="fa fa-pencil"></i><NavLink to="/Author">Edit profile</NavLink>
+                          </span>
+                        </li>
+                        <li>
+                          <span>
+                            <i className="fa fa-sign-out"></i><a onClick={onDisconnectWallet}>Sign out</a>
+                          </span>
+                        </li>
+                      </ul>
+                    </div>
+                  }
+                </div>
               </div>
               : <div className="btn-main" onClick={onConnectWallet}>
                 <i className="icon_wallet_alt"></i>

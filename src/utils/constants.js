@@ -1,4 +1,4 @@
-import { ColorMode, NetworkType } from "@airgap/beacon-sdk";
+import { ColorMode, NetworkType, BeaconClient } from "@airgap/beacon-sdk";
 import { BeaconWallet } from "@taquito/beacon-wallet";
 import { TezosToolkit } from "@taquito/taquito";
 
