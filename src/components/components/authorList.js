@@ -12,7 +12,7 @@ const authorlist= () => (
           </div>                                    
           <div className="author_list_info">
               <span onClick={()=> window.open("", "_self")}>Monica Lucas</span>
-              <span className="bot">3.2 XTZ</span>
+              <span className="bot">3.2 ETH</span>
           </div>
       </li>
       <li>
@@ -24,7 +24,7 @@ const authorlist= () => (
           </div>
           <div className="author_list_info">
               <span onClick={()=> window.open("", "_self")}>Mamie Barnett</span>
-              <span className="bot">2.8 XTZ</span>
+              <span className="bot">2.8 ETH</span>
           </div>
       </li>
       <li>
@@ -36,7 +36,7 @@ const authorlist= () => (
           </div>
           <div className="author_list_info">
               <span onClick={()=> window.open("", "_self")}>Nicholas Daniels</span>
-              <span className="bot">2.5 XTZ</span>
+              <span className="bot">2.5 ETH</span>
           </div>
       </li>
       <li>
@@ -48,7 +48,7 @@ const authorlist= () => (
           </div>
           <div className="author_list_info">
               <span onClick={()=> window.open("", "_self")}>Lori Hart</span>
-              <span className="bot">2.2 XTZ</span>
+              <span className="bot">2.2 ETH</span>
           </div>
       </li>
       <li>
@@ -60,7 +60,7 @@ const authorlist= () => (
           </div>
           <div className="author_list_info">
               <span onClick={()=> window.open("", "_self")}>Jimmy Wright</span>
-              <span className="bot">1.9 XTZ</span>
+              <span className="bot">1.9 ETH</span>
           </div>
       </li>
       <li>
@@ -72,7 +72,7 @@ const authorlist= () => (
           </div>
           <div className="author_list_info">
               <span onClick={()=> window.open("", "_self")}>Karla Sharp</span>
-              <span className="bot">1.6 XTZ</span>
+              <span className="bot">1.6 ETH</span>
           </div>
       </li>
       <li>
@@ -84,7 +84,7 @@ const authorlist= () => (
           </div>
           <div className="author_list_info">
               <span onClick={()=> window.open("", "_self")}>Gayle Hicks</span>
-              <span className="bot">1.5 XTZ</span>
+              <span className="bot">1.5 ETH</span>
           </div>
       </li>
       <li>
@@ -96,7 +96,7 @@ const authorlist= () => (
           </div>
           <div className="author_list_info">
               <span onClick={()=> window.open("", "_self")}>Claude Banks</span>
-              <span className="bot">1.3 XTZ</span>
+              <span className="bot">1.3 ETH</span>
           </div>
       </li>
       <li>
@@ -108,7 +108,7 @@ const authorlist= () => (
           </div>
           <div className="author_list_info">
               <span onClick={()=> window.open("", "_self")}>Franklin Greer</span>
-              <span className='bot'>0.9 XTZ</span>
+              <span className='bot'>0.9 ETH</span>
           </div>
       </li>
       <li>
@@ -120,7 +120,7 @@ const authorlist= () => (
           </div>
           <div className="author_list_info">
               <span onClick={()=> window.open("", "_self")}>Stacy Long</span>
-              <span className='bot'>0.8 XTZ</span>
+              <span className='bot'>0.8 ETH</span>
           </div>
       </li>
       <li>
@@ -132,7 +132,7 @@ const authorlist= () => (
           </div>
           <div className="author_list_info">
               <span onClick={()=> window.open("", "_self")}>Ida Chapman</span>
-              <span className='bot'>0.6 XTZ</span>
+              <span className='bot'>0.6 ETH</span>
           </div>
       </li>
       <li>

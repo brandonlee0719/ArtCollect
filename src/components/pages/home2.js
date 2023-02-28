@@ -1,9 +1,9 @@
 import React from 'react';
 import SliderMainParticle from '../components/SliderMainParticle';
 import FeatureBox from '../components/FeatureBox';
-import CarouselCollection from '../components/CarouselCollection';
-import CarouselNew from '../components/CarouselNew';
-import AuthorList from '../components/authorList';
+import CarouselCollectionRedux from '../components/CarouselCollectionRedux';
+import CarouselNewRedux from '../components/CarouselNewRedux';
+import AuthorListRedux from '../components/AuthorListRedux';
 import Footer from '../components/footer';
 import { createGlobalStyle } from 'styled-components';
 
@@ -98,7 +98,7 @@ const homeone= () => (
               <h2>New Items</h2>
           </div>
         </div> 
-        <CarouselNew/>
+        <CarouselNewRedux/>
       </section>
 
       <section className='container no-top no-bottom'>
@@ -108,7 +108,7 @@ const homeone= () => (
               <h2>Top Sellers</h2>
           </div>
           <div className='col-lg-12'>
-            <AuthorList/>
+            <AuthorListRedux/>
           </div>
         </div>
       </section>
@@ -120,7 +120,7 @@ const homeone= () => (
               <h2>Hot Collections</h2>
           </div>
             <div className='col-lg-12'>
-              <CarouselCollection/>
+              <CarouselCollectionRedux/>
             </div>
           </div>
       </section>
