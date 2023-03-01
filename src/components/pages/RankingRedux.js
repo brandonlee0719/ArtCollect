@@ -42,14 +42,10 @@ const options = [
 ]
 const options1 = [
   { value: 'All categories', label: 'All categories' },
-  { value: 'Art', label: 'Art' },
-  { value: 'Music', label: 'Music' },
-  { value: 'Domain Names', label: 'Domain Names' },
-  { value: 'Virtual World', label: 'Virtual World' },
-  { value: 'Trading Cards', label: 'Trading Cards' },
-  { value: 'Collectibles', label: 'Collectibles' },
-  { value: 'Sports', label: 'Sports' },
-  { value: 'Utility', label: 'Utility' }
+  { value: 'Image', label: 'Image' },
+  { value: 'Video', label: 'Video' },
+  { value: 'Audio', label: 'Audio' },
+  { value: 'Gif', label: 'Gif' }
 ]
 
 
@@ -70,7 +66,7 @@ const RankingRedux = () => {
         <div className='container'>
             <div className='row m-10-hor'>
             <div className='col-12'>
-                <h1 className='text-center'>Top NFTs</h1>
+                <h1 className='text-center'>Leaderboard</h1>
             </div>
             </div>
         </div>

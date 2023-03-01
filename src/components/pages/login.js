@@ -47,9 +47,9 @@ const Logintwo= () => {
 
     await request(requestURL, { method: 'POST', body: data})
       .then((response) => {
-        auth.setToken(response.jwt, false);
-        auth.setUserInfo(response.user, false);
-        redirectUser('/Author/1');
+        auth.setToken(response.jwt, true);
+        auth.setUserInfo(response.user, true);
+        redirectUser(`/profile/${response.user.id}`);
       }).catch((err) => {
         console.log(err);
       });
@@ -67,7 +67,7 @@ const Logintwo= () => {
               <div className="col-lg-4 offset-lg-4 m-auto px-0">
                 <div className="box-login">
                   <h3 className="mb10">Sign In</h3>
-                  <p>Login using an existing account or create a new account <span>here</span>.</p>
+                  <p>Login using an existing account or create a new account <span onClick={() => navigate("/register")}>here</span>.</p>
                   <Formik
                     enableReinitialize
                     validationSchema={validationSchema}
@@ -102,12 +102,12 @@ const Logintwo= () => {
                             </div>
                             <div className="clearfix"></div>
                             <div className="spacer-single"></div>
-                            <ul className="list s3">
+                            {/* <ul className="list s3">
                               <li>Login with:</li>
                               <li><span >Facebook</span></li>
                               <li><span >Google</span></li>
-                            </ul>
-                            <div className="spacer-half"></div>
+                            </ul> */}
+                            {/* <div className="spacer-half"></div> */}
                           </Form>
                         )}
                     }
