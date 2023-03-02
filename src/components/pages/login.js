@@ -96,7 +96,7 @@ const Logintwo= () => {
                             </div>
                             <div className="field-set">
                               <label>Password:</label>
-                              <Field className="form-control" type="password" name="password" placeholder="password"/>
+                              <Field className="form-control" type="password" name="password" placeholder="Password"/>
                               <ErrorMessage name="password" component="div" />
                             </div>
                             <div className="field-set">
