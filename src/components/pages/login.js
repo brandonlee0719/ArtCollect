@@ -91,12 +91,12 @@ const Logintwo= () => {
                           <Form className="form-border">                            
                             <div className="field-set">
                               <label>Email Address:</label>
-                              <Field className="form-control" type="email" name="identifier" />
+                              <Field className="form-control" type="email" name="identifier" placeholder="Email"/>
                               <ErrorMessage name="identifier" component="div" />
                             </div>
                             <div className="field-set">
                               <label>Password:</label>
-                              <Field className="form-control" type="password" name="password" />
+                              <Field className="form-control" type="password" name="password" placeholder="password"/>
                               <ErrorMessage name="password" component="div" />
                             </div>
                             <div className="field-set">
