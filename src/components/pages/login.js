@@ -88,12 +88,14 @@ const Logintwo= () => {
                         // const submitValidationMessage = 'Please fill in all required fields';
 
                         return (
-                          <Form className="form-border">
+                          <Form className="form-border">                            
                             <div className="field-set">
+                              <label>Email Address:</label>
                               <Field className="form-control" type="email" name="identifier" />
                               <ErrorMessage name="identifier" component="div" />
                             </div>
                             <div className="field-set">
+                              <label>Password:</label>
                               <Field className="form-control" type="password" name="password" />
                               <ErrorMessage name="password" component="div" />
                             </div>
