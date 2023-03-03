@@ -1,5 +1,5 @@
 const api = {
-    baseUrl: 'http://167.71.22.160:1337',
+    baseUrl: 'http://localhost:1337',
     nfts: '/api/nfts',
     nftShowcases: '/api/nft_showcases',
     authors: '/api/authors',
