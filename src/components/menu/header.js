@@ -125,14 +125,16 @@ const Header = function () {
   useEffect(() => {
     const activeAccount = localStorage.getItem("beacon:active-account");
     console.log(activeAccount);
-    if( activeAccount != null && activeAccount != "undefined") {
+    if (activeAccount != null && activeAccount != "undefined") {
       const walletAccounts = JSON.parse(localStorage.getItem("beacon:accounts"));
-      const activeWallet= walletAccounts.find(({accountIdentifier}) => accountIdentifier === activeAccount);
+      const activeWallet = walletAccounts.find(({ accountIdentifier }) => accountIdentifier === activeAccount);
       const activeAddress = activeWallet.address;
       setActiveAddress(activeAddress);
       getWalletBalance(activeAddress);
     }
   }, [activeAddress]);
+
+  console.log(auth.getUserInfo())
   return (
     <header id="myHeader" className='navbar white'>
       <div className='container'>
@@ -339,7 +341,7 @@ const Header = function () {
                   {showpop &&
                     <div className="popshow">
                       <div className="d-name">
-                        <h4>{auth.getUserInfo().username}</h4>
+                        <h4>{auth.getUserInfo() ? auth.getUserInfo().username: "Art Collect"}</h4>
                         <span className="name" onClick={() => window.open("", "_self")}>Set display name</span>
                       </div>
                       <div className="d-balance">
@@ -373,15 +375,11 @@ const Header = function () {
                   }
                 </div>
               </div>
-              : auth.getUserInfo()
-                ? <div className="btn-main" onClick={onConnectWallet}>
-                  <i className="icon_wallet_alt"></i>
-                  <span>Connect Wallet</span>
-                </div>
-                : <div className="btn-main" onClick={() => navigate("/login")}>
-                  <i className="icon_wallet_alt"></i>
-                  <span>Sign in</span>
-                </div>}
+              : <div className="btn-main" onClick={onConnectWallet}>
+                <i className="icon_wallet_alt"></i>
+                <span>Connect Wallet</span>
+              </div>
+            }
           </div>
 
         </div>
