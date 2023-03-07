@@ -21,13 +21,13 @@ const Checkout = () => {
        				</div>
        			</div>
        			<div className='price'>
-       			0.08 ETH
+       			0.08 XTZ
        			</div>
        		</div>
        		<div className='heading mt-3'>
        			<h3>Totals</h3>
        			<div className='subtotal'>
-       			0.08 ETH
+       			0.08 XTZ
        			</div>
        		</div>
        		<div className='agrement'>

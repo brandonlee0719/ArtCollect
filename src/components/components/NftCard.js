@@ -46,11 +46,11 @@ const NftCard = ({ nft, className = 'd-item col-lg-3 col-md-6 col-sm-6 col-xs-12
                     </span>
                     { nft.status === 'has_offers' ? (
                             <div className="has_offers">
-                                <span className='through'>{nft.priceover}</span> {nft.price} ETH
+                                <span className='through'>{nft.priceover}</span> {nft.price} XTZ
                             </div> 
                         ) : (
                             <div className="nft__item_price">
-                                {nft.price} ETH
+                                {nft.price} XTZ
                                 { nft.status === 'on_auction' && 
                                     <span>{nft.bid}/{nft.max_bid}</span>
                                 }

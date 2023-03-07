@@ -10,7 +10,7 @@ export default class Responsive extends Component {
         authorImg: "./img/author/author-1.jpg",
         previewImg: "./img/items/music-1.jpg",
         title: "Pinky Ocean",
-        price: "0.08 ETH",
+        price: "0.08 XTZ",
         bid: "1/20",
         likes: 50
     },
@@ -22,7 +22,7 @@ export default class Responsive extends Component {
         authorImg: "./img/author/author-10.jpg",
         previewImg: "./img/items/music-2.jpg",
         title: "Deep Sea Phantasy",
-        price: "0.06 ETH",
+        price: "0.06 XTZ",
         bid: "1/22",
         likes: 80
     },
@@ -34,7 +34,7 @@ export default class Responsive extends Component {
         authorImg: "./img/author/author-11.jpg",
         previewImg: "./img/items/music-3.jpg",
         title: "Rainbow Style",
-        price: "0.05 ETH",
+        price: "0.05 XTZ",
         bid: "1/11",
         likes: 97
     },
@@ -46,7 +46,7 @@ export default class Responsive extends Component {
         authorImg: "./img/author/author-12.jpg",
         previewImg: "./img/items/music-4.jpg",
         title: "Two Tigers",
-        price: "0.08 ETH",
+        price: "0.08 XTZ",
         bid: "1/20",
         likes: 50
     },
@@ -58,7 +58,7 @@ export default class Responsive extends Component {
         authorImg: "./img/author/author-9.jpg",
         previewImg: "./img/items/music-5.jpg",
         title: "The Truth",
-        price: "0.08 ETH",
+        price: "0.08 XTZ",
         bid: "1/20",
         likes: 50
     },
@@ -70,7 +70,7 @@ export default class Responsive extends Component {
         authorImg: "./img/author/author-2.jpg",
         previewImg: "./img/items/music-6.jpg",
         title: "Running Puppets",
-        price: "0.08 ETH",
+        price: "0.08 XTZ",
         bid: "1/20",
         likes: 50
     },
@@ -82,7 +82,7 @@ export default class Responsive extends Component {
         authorImg: "./img/author/author-2.jpg",
         previewImg: "./img/items/music-7.jpg",
         title: "Running Puppets",
-        price: "0.08 ETH",
+        price: "0.08 XTZ",
         bid: "1/20",
         likes: 50
     },
@@ -94,7 +94,7 @@ export default class Responsive extends Component {
         authorImg: "./img/author/author-12.jpg",
         previewImg: "./img/items/music-8.jpg",
         title: "I Believe I Can Fly",
-        price: "0.08 ETH",
+        price: "0.08 XTZ",
         bid: "1/20",
         likes: 50
     }]

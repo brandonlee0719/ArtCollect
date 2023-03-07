@@ -60,7 +60,7 @@ const Card = ({ nft = null, className = 'd-item col-lg-3 col-md-6 col-sm-6 col-x
                         <h4>{nft.asset.name}</h4>
                     </span>
                     <div className="nft__item_price">
-                        {priceLabel} ETH
+                        {priceLabel} XTZ
                     </div>
                     <div className="nft__item_action">
                         <span onClick={() => navigateTo(nft.asset.openseaLink)}>{nft.side ? 'Buy now or Make offer' : 'Buy now'}</span>

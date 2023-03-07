@@ -235,7 +235,7 @@ const ItemDetailRedux = ({ nftId }) => {
                                                 </span>
                                             </div>                                    
                                             <div className="p_list_info">
-                                                Bid {bid.author.id === nft.author.id && 'accepted'} <b>{bid.value} ETH</b>
+                                                Bid {bid.author.id === nft.author.id && 'accepted'} <b>{bid.value} XTZ</b>
                                                 <span>by <b>{bid.author.username}</b> at {moment(bid.created_at).format('L, LT')}</span>
                                             </div>
                                         </div>
@@ -254,7 +254,7 @@ const ItemDetailRedux = ({ nftId }) => {
                                                 </span>
                                             </div>                                    
                                             <div className="p_list_info">
-                                                Bid {bid.author.id === nft.author.id && 'accepted'} <b>{bid.value} ETH</b>
+                                                Bid {bid.author.id === nft.author.id && 'accepted'} <b>{bid.value} XTZ</b>
                                                 <span>by <b>{bid.author.username}</b> at {moment(bid.created_at).format('L, LT')}</span>
                                             </div>
                                         </div>
@@ -297,19 +297,19 @@ const ItemDetailRedux = ({ nftId }) => {
                 <div className='heading mt-3'>
                     <p>Your balance</p>
                     <div className='subtotal'>
-                    10.67856 ETH
+                    10.67856 XTZ
                     </div>
                 </div>
               <div className='heading'>
                 <p>Service fee 2.5%</p>
                 <div className='subtotal'>
-                0.00325 ETH
+                0.00325 XTZ
                 </div>
               </div>
               <div className='heading'>
                 <p>You will pay</p>
                 <div className='subtotal'>
-                0.013325 ETH
+                0.013325 XTZ
                 </div>
               </div>
                 <button className='btn-main lead mb-5'>Checkout</button>
@@ -328,7 +328,7 @@ const ItemDetailRedux = ({ nftId }) => {
                 <div className='detailcheckout mt-4'>
                     <div className='listcheckout'>
                         <h6>
-                         Your bid (ETH)
+                         Your bid (XTZ)
                         </h6>
                         <input type="text" className="form-control"/>
                     </div>
@@ -345,19 +345,19 @@ const ItemDetailRedux = ({ nftId }) => {
                 <div className='heading mt-3'>
                     <p>Your balance</p>
                     <div className='subtotal'>
-                    10.67856 ETH
+                    10.67856 XTZ
                     </div>
                 </div>
               <div className='heading'>
                 <p>Service fee 2.5%</p>
                 <div className='subtotal'>
-                0.00325 ETH
+                0.00325 XTZ
                 </div>
               </div>
               <div className='heading'>
                 <p>You will pay</p>
                 <div className='subtotal'>
-                0.013325 ETH
+                0.013325 XTZ
                 </div>
               </div>
                 <button className='btn-main lead mb-5'>Checkout</button>

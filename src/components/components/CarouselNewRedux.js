@@ -60,7 +60,7 @@ const CarouselNewRedux = () => {
                           <h4>{nft.title}</h4>
                       </span>
                       <div className="nft__item_price">
-                        {nft.price} ETH<span>{nft.bid}/{nft.max_bid}</span>
+                        {nft.price} XTZ<span>{nft.bid}/{nft.max_bid}</span>
                       </div>
                       <div className="nft__item_action">
                           <span onClick={()=> window.open(nft.bid_link, "_self")}>Place a bid</span>

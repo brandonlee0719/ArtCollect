@@ -109,7 +109,7 @@ render() {
                                   
                                           <div id="tab_opt_1">
                                                 <h5>Price</h5>
-                                                <input type="text" name="item_price" id="item_price" className="form-control" placeholder="enter price for one item (ETH)" />
+                                                <input type="text" name="item_price" id="item_price" className="form-control" placeholder="enter price for one item (XTZ)" />
                                           </div>
 
                                             <div id="tab_opt_2" className='hide'>
@@ -170,7 +170,7 @@ render() {
                       <div className="spacer-10"></div>
 
                       <h5>Price</h5>
-                      <input type="text" name="item_price" id="item_price" className="form-control" placeholder="enter price for one item (ETH)" />
+                      <input type="text" name="item_price" id="item_price" className="form-control" placeholder="enter price for one item (XTZ)" />
 
                       <div className="spacer-10"></div>
 
@@ -206,7 +206,7 @@ render() {
                               <h4>Pinky Ocean</h4>
                           </span>
                           <div className="nft__item_price">
-                              0.08 ETH<span>1/20</span>
+                              0.08 XTZ<span>1/20</span>
                           </div>
                           <div className="nft__item_action">
                               <span>Place a bid</span>

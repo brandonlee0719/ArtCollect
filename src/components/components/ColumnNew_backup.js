@@ -23,7 +23,7 @@ export default class Responsive extends Component {
                 authorImg: "./img/author/author-1.jpg",
                 previewImg: "./img/items/static-1.jpg",
                 title: "Pinky Ocean",
-                price: "0.08 ETH",
+                price: "0.08 XTZ",
                 bid: "1/20",
                 likes: 50
             },
@@ -32,7 +32,7 @@ export default class Responsive extends Component {
                 authorImg: "./img/author/author-1.jpg",
                 previewImg: "./img/items/static-1.jpg",
                 title: "Pinky Ocean",
-                price: "0.08 ETH",
+                price: "0.08 XTZ",
                 bid: "1/20",
                 likes: 50
             },
@@ -41,7 +41,7 @@ export default class Responsive extends Component {
                 authorImg: "./img/author/author-1.jpg",
                 previewImg: "./img/items/static-1.jpg",
                 title: "Pinky Ocean",
-                price: "0.08 ETH",
+                price: "0.08 XTZ",
                 bid: "1/20",
                 likes: 50
             },
@@ -50,7 +50,7 @@ export default class Responsive extends Component {
                 authorImg: "./img/author/author-1.jpg",
                 previewImg: "./img/items/static-1.jpg",
                 title: "Pinky Ocean",
-                price: "0.08 ETH",
+                price: "0.08 XTZ",
                 bid: "1/20",
                 likes: 50
             }
@@ -67,7 +67,7 @@ loadMore = () => {
             authorImg: "./img/author/author-1.jpg",
             previewImg: "./img/items/static-1.jpg",
             title: "Pinky Ocean",
-            price: "0.08 ETH",
+            price: "0.08 XTZ",
             bid: "1/20",
             likes: 50
         },
@@ -76,7 +76,7 @@ loadMore = () => {
             authorImg: "./img/author/author-1.jpg",
             previewImg: "./img/items/static-1.jpg",
             title: "Pinky Ocean",
-            price: "0.08 ETH",
+            price: "0.08 XTZ",
             bid: "1/20",
             likes: 50
         },
@@ -85,7 +85,7 @@ loadMore = () => {
             authorImg: "./img/author/author-1.jpg",
             previewImg: "./img/items/static-1.jpg",
             title: "Pinky Ocean",
-            price: "0.08 ETH",
+            price: "0.08 XTZ",
             bid: "1/20",
             likes: 50
         },
@@ -94,7 +94,7 @@ loadMore = () => {
             authorImg: "./img/author/author-1.jpg",
             previewImg: "./img/items/static-1.jpg",
             title: "Pinky Ocean",
-            price: "0.08 ETH",
+            price: "0.08 XTZ",
             bid: "1/20",
             likes: 50
         }

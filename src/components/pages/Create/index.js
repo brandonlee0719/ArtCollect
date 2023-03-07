@@ -239,7 +239,7 @@ const CreateNft = () => {
                             <div className="de_tab_content pt-3">
                               <div id="tab_opt_1" className={nftStatus === availableStatus.ON_AUCTION ? 'hide' : ''}>
                                 <h5>Price</h5>
-                                <Field onBlur={event => setPricePreview(event.target.value)} type="text" name="price" id="price" className="form-control" placeholder="enter price for one item (ETH)"/>                                    
+                                <Field onBlur={event => setPricePreview(event.target.value)} type="text" name="price" id="price" className="form-control" placeholder="enter price for one item (XTZ)"/>                                    
                                 <ErrorMessage name="price" component="div" />
                               </div>
                               <div id="tab_opt_2" className={nftStatus === availableStatus.BUY_NOW ? 'hide' : ''}>
@@ -297,7 +297,7 @@ const CreateNft = () => {
                   <span>
                     <h4>{titlePreview}</h4>
                   </span>
-                  <div className="nft__item_price"> {pricePreview} ETH 
+                  <div className="nft__item_price"> {pricePreview} XTZ 
                   {nftStatus !== availableStatus.BUY_NOW && <span>1/20</span>}
                   </div>
                   <div className="nft__item_action">
