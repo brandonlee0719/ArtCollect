@@ -134,7 +134,6 @@ const Header = function () {
     }
   }, [activeAddress]);
 
-  console.log(auth.getUserInfo())
   return (
     <header id="myHeader" className='navbar white'>
       <div className='container'>
@@ -144,7 +143,7 @@ const Header = function () {
               <NavLink to="/">
                 <div className="d-flex align-items-center">
                   <img
-                    src="./img/logo.png"
+                    src="../../img/logo.png"
                     className="img-fluid logo-image"
                     alt="#"
                   />
@@ -200,7 +199,7 @@ const Header = function () {
                   <div className='navbar-item'>
                     <a onClick={() => {
                       btn_icon(!showmenu);
-                      window.open("https://art-collecting.com/blogs.htm", "_blank");
+                      window.open("https://medium.com/@teamartcollect", "_blank");
                     }}>
                       Blog
                     </a>
@@ -251,7 +250,7 @@ const Header = function () {
                   </NavLink>
                 </div>
                 <div className='navbar-item'>
-                  <a onClick={() => window.open("https://art-collecting.com/blogs.htm", "_blank")}>
+                  <a onClick={() => window.open("https://medium.com/@teamartcollect", "_blank")}>
                     Blog
                     <span className='lines'></span>
                   </a>

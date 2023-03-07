@@ -6,7 +6,7 @@ import { Form, Formik, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import auth, { authorUrl } from '../../../core/auth';
 import request from '../../../core/auth/request';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import api from "../../../core/api";
 import { fetchAuthorList } from "../../../store/actions/thunks";
 import * as selectors from '../../../store/selectors';
@@ -49,7 +49,8 @@ const validationSchema = Yup.object().shape({
     ),
 });
 
-const Profile = ({ authorId }) => {
+const Profile = () => {
+    const {authorId} = useParams();
     const navigate = useNavigate();
     const jwt = auth.getToken();
     const authorsState = useSelector(selectors.authorsState);
