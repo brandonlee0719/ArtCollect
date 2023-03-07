@@ -1,5 +1,6 @@
 import React from 'react';
 import SliderCarouselSingleRedux from '../components/SliderCarouselSingleRedux';
+import SliderCarouselRedux from '../components/SliderCarouselRedux';
 import FeatureBox from '../components/FeatureBox';
 import CarouselCollectionRedux from '../components/CarouselCollectionRedux';
 import ColumnNewRedux from '../components/ColumnNewRedux';
@@ -67,7 +68,7 @@ const homethree = () => (
   <div>
     <GlobalStyles />
     <section className="jumbotron no-bg">
-      <div className='container'>
+      {/* <div className='container'>
         <div className='row align-items-center'>
           <div className='col-lg-6'>
             <div className="spacer-single"></div>
@@ -121,7 +122,8 @@ const homethree = () => (
             <SliderCarouselSingleRedux />
           </div>
         </div>
-      </div>
+      </div> */}
+      <SliderCarouselRedux/>
     </section>
 
     <section className='container no-top'>
