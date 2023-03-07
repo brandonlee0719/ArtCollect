@@ -145,7 +145,7 @@ const Profile = ({ authorId }) => {
     return  (
         <div>
             <GlobalStyles/>
-            <section id='profile_banner' className='jumbotron breadcumb no-bg' style={{backgroundImage: `url(${api.baseUrl + (author && author.banner && author.banner.url ? author.banner.url : '/uploads/4_1ec08f99e2.jpg')})`}}>
+            <section id='profile_banner' className='jumbotron breadcumb no-bg' style={{backgroundImage: author && author.banner && author.banner.url ? `url(${api.baseUrl + author.banner.url})` : 'url(../../img/author_single/author_banner.jpg)'}}>
                 <div className='mainbreadcumb'>
                 </div>
             </section>
