@@ -3,7 +3,7 @@ import Footer from '../components/footer';
 import { createGlobalStyle } from 'styled-components';
 import { Form, Formik, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import auth, { authorUrl, registerUrl } from '../../core/auth';
+import auth, { registerUrl } from '../../core/auth';
 import request from '../../core/auth/request';
 import { useNavigate } from 'react-router-dom';
 
@@ -50,12 +50,12 @@ const Register = () => {
 
   const handleSubmitForm = async (data) => {
     const requestURL = registerUrl;
-
+    console.log(requestURL,data)
     await request(requestURL, { method: 'POST', body: data })
       .then((response) => {
         // console.log(response)
-        auth.setToken(response.jwt, false);
-        auth.setUserInfo(response.user, false);
+        auth.setToken(response.jwt, true);
+        auth.setUserInfo(response.user, true);
         redirectUser('/Profile/' + response.user.id);
       }).catch((err) => {
         console.log(err);
@@ -84,9 +84,9 @@ const Register = () => {
                 // const submitData = pick(values, [...requiredFields]);
                 console.log(values)
                 setSubmitting(true);
-                await handleSubmitForm(values);
-                setSubmitting(false);
+                // await handleSubmitForm(values);
                 resetForm();
+                setSubmitting(false);
               }}
             >
               {
@@ -132,7 +132,8 @@ const Register = () => {
 
                         <div className="col-md-12">
                           <div id='submit' className="pull-left">
-                            <input type='submit' id='send_message' value='Register Now' className="btn btn-main color-2" />
+                            <input type='submit' id='send_message' value='Register Now' className="btn btn-main color-2"
+                              onClick={async () => await handleSubmitForm(values)} />
                           </div>
 
                           <div className="clearfix"></div>

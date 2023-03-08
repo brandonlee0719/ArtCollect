@@ -124,7 +124,6 @@ const Header = function () {
 
   useEffect(() => {
     const activeAccount = localStorage.getItem("beacon:active-account");
-    console.log(activeAccount);
     if (activeAccount != null && activeAccount != "undefined") {
       const walletAccounts = JSON.parse(localStorage.getItem("beacon:accounts"));
       const activeWallet = walletAccounts.find(({ accountIdentifier }) => accountIdentifier === activeAccount);

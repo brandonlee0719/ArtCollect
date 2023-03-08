@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Footer from '../components/footer';
 import { createGlobalStyle } from 'styled-components';
 import { Form, Formik, Field, ErrorMessage } from 'formik';
@@ -36,16 +36,16 @@ const initialValues = {
   password: ''
 };
 
-const Logintwo= () => { 
+const Logintwo = () => {
   const navigate = useNavigate();
   const redirectUser = (path) => {
     navigate(path);
   }
-  
+
   const handleSubmitForm = async (data) => {
     const requestURL = loginUrl;
 
-    await request(requestURL, { method: 'POST', body: data})
+    await request(requestURL, { method: 'POST', body: data })
       .then((response) => {
         auth.setToken(response.jwt, true);
         auth.setUserInfo(response.user, true);
@@ -58,9 +58,9 @@ const Logintwo= () => {
 
   return (
     <div>
-    <GlobalStyles/>
+      <GlobalStyles />
 
-      <section className='jumbotron breadcumb no-bg' style={{backgroundImage: `url(${'./img/background/10.jpg'})`}}>
+      <section className='jumbotron breadcumb no-bg' style={{ backgroundImage: `url(${'./img/background/10.jpg'})` }}>
         <div className='mainbreadcumb'>
           <div className='container'>
             <div className='row align-items-center px-0'>
@@ -77,30 +77,31 @@ const Logintwo= () => {
                       // const submitData = pick(values, [...requiredFields]);
                       console.log(values)
                       setSubmitting(true);
-                      await handleSubmitForm(values);
-                      setSubmitting(false);
+                      // await handleSubmitForm(values);
                       resetForm();
+                      setSubmitting(false);
                     }}
                   >
-                    { 
+                    {
                       ({ values, isSubmitting, isValid }) => {
                         // const isAllValid = isValid;
                         // const submitValidationMessage = 'Please fill in all required fields';
 
                         return (
-                          <Form className="form-border">                            
+                          <Form className="form-border">
                             <div className="field-set">
                               <label>Email Address:</label>
-                              <Field className="form-control" type="email" name="identifier" placeholder="Email"/>
+                              <Field className="form-control" type="email" name="identifier" placeholder="Email" />
                               <ErrorMessage name="identifier" component="div" />
                             </div>
                             <div className="field-set">
                               <label>Password:</label>
-                              <Field className="form-control" type="password" name="password" placeholder="Password"/>
+                              <Field className="form-control" type="password" name="password" placeholder="Password" />
                               <ErrorMessage name="password" component="div" />
                             </div>
                             <div className="field-set">
-                              <input type='submit' id='send_message' value='Submit' className="btn btn-main btn-fullwidth color-2"/>
+                              <input type='submit' id='send_message' value='Submit' className="btn btn-main btn-fullwidth color-2"
+                                onClick={async () => await handleSubmitForm(values)} />
                             </div>
                             <div className="clearfix"></div>
                             <div className="spacer-single"></div>
@@ -111,7 +112,8 @@ const Logintwo= () => {
                             </ul> */}
                             {/* <div className="spacer-half"></div> */}
                           </Form>
-                        )}
+                        )
+                      }
                     }
                   </Formik>
                 </div>
