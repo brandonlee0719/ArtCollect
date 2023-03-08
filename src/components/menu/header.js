@@ -359,11 +359,11 @@ const Header = function () {
                             <i className="fa fa-user"></i><NavLink to="/profile/1">My Profile</NavLink>
                           </span>
                         </li>
-                        <li>
+                        {/* <li>
                           <span>
                             <i className="fa fa-pencil"></i><NavLink to="/profile/1">Edit profile</NavLink>
                           </span>
-                        </li>
+                        </li> */}
                         <li>
                           <span>
                             <i className="fa fa-sign-out"></i><a onClick={onDisconnectWallet}>Sign out</a>

@@ -1,5 +1,5 @@
 const api = {
-    baseUrl: 'https://artcollect.io',
+    baseUrl: 'http://localhost:1337',
     nfts: '/api/nfts',
     nftShowcases: '/api/nft_showcases',
     authors: '/api/authors',

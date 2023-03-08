@@ -4,7 +4,7 @@ import Footer from '../../components/footer';
 import { createGlobalStyle } from 'styled-components';
 import { Form, Formik, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import auth, { authorUrl } from '../../../core/auth';
+import auth, { apiKey, authorUrl } from '../../../core/auth';
 import request from '../../../core/auth/request';
 import { useNavigate, useParams } from 'react-router-dom';
 import api from "../../../core/api";
@@ -55,6 +55,7 @@ const Profile = () => {
     const jwt = auth.getToken();
     const authorsState = useSelector(selectors.authorsState);
     const author = authorsState.data ? authorsState.data[0] : null;
+    console.log("==============>", authorsState.data)
 
     const initialValues = {
         username: author ? author.username : '',
@@ -79,11 +80,19 @@ const Profile = () => {
 
     const handleSubmitForm = async (data) => {
         const requestURL = authorUrl(authorId);
-    
-        await request(requestURL, { method: 'PUT', body: data})
+        let responseData={
+            "data":data
+        }
+        console.log(data)
+        let config = {
+			headers: {
+			  'Authorization': 'Bearer ' + apiKey
+			}
+		  }
+        await request(requestURL, { method: 'PUT', body: responseData,config})
         .then((response) => {
             console.log(response)
-            redirectUser(`/Author/${authorId}`);
+            // redirectUser(`/Author/${authorId}`);
         }).catch((err) => {
             console.log(err);
         });
@@ -94,20 +103,20 @@ const Profile = () => {
         var formData = new FormData()
 
         formData.append('files', file)
-        formData.append('ref', 'author') // link the image to a content type
+        formData.append('ref', 'api::author.author') // link the image to a content type
         formData.append('refId', authorId) // link the image to a specific entry
         formData.append('field', field) // link the image to a specific field
-
+        console.log(field)
         await axios({
             method: 'post',
-            url : `${api.baseUrl}/upload`,
+            url : `${api.baseUrl}/api/upload`,
             data: formData,
             headers: {
                 Authorization: `Bearer ${jwt}`,
                 "Content-Type": "multipart/form-data"
             }
         }).then(res => {
-            redirectUser(`/Author/${authorId}`);
+            // redirectUser(`/Author/${authorId}`);
             console.log(res);
         }).catch(err => {
             console.log(err)
