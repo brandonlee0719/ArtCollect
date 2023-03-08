@@ -3,7 +3,7 @@ import Footer from '../components/footer';
 import { createGlobalStyle } from 'styled-components';
 import { Form, Formik, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import auth, { apiKey, registerUrl,postAuthorUrl } from '../../core/auth';
+import auth, { apiKey, registerUrl, postAuthorUrl } from '../../core/auth';
 import request from '../../core/auth/request';
 import { useNavigate } from 'react-router-dom';
 
@@ -51,21 +51,21 @@ const Register = () => {
   const handleSubmitForm = async (data) => {
     const requestURL = registerUrl;
     let config = {
-			headers: {
-			  'Authorization': 'Bearer ' + apiKey
-			}
-		  }
-    await request(requestURL, { method: 'POST', body: data,config })
-      .then(async(response) => {
+      headers: {
+        'Authorization': 'Bearer ' + apiKey
+      }
+    }
+    await request(requestURL, { method: 'POST', body: data, config })
+      .then(async (response) => {
         // console.log(response)
         auth.setToken(response.jwt, false);
         auth.setUserInfo(response.user, false);
-        let authorData={
-          "data":{
-            "username":response.user.username
+        let authorData = {
+          "data": {
+            "username": response.user.username
           }
         }
-        let authorPost=await request(postAuthorUrl,{method:'POST',body:authorData,config})
+        await request(postAuthorUrl, { method: 'POST', body: authorData, config })
         redirectUser('/Profile/' + response.user.id);
       }).catch((err) => {
         console.log(err);
