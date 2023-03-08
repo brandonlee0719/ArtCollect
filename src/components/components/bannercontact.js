@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from '@reach/router';
+import { Link } from 'react-router-dom';
 
 export default () => (
   <section className='container-fluid p-md-0'>

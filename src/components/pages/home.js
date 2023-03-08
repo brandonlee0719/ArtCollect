@@ -1,9 +1,10 @@
 import React from 'react';
-import SliderCarousel from '../components/SliderCarouselsingle';
+import SliderCarouselSingleRedux from '../components/SliderCarouselSingleRedux';
+import SliderCarouselRedux from '../components/SliderCarouselRedux';
 import FeatureBox from '../components/FeatureBox';
-import CarouselCollection from '../components/CarouselCollection';
-import ColumnNew from '../components/ColumnNew';
-import AuthorList from '../components/authorList';
+import CarouselCollectionRedux from '../components/CarouselCollectionRedux';
+import ColumnNewRedux from '../components/ColumnNewRedux';
+import AuthorListRedux from '../components/AuthorListRedux';
 import Footer from '../components/footer';
 import { createGlobalStyle } from 'styled-components';
 import Reveal from 'react-awesome-reveal';
@@ -67,7 +68,7 @@ const homethree = () => (
   <div>
     <GlobalStyles />
     <section className="jumbotron no-bg">
-      <div className='container'>
+      {/* <div className='container'>
         <div className='row align-items-center'>
           <div className='col-lg-6'>
             <div className="spacer-single"></div>
@@ -118,10 +119,11 @@ const homethree = () => (
             <div className="spacer-double"></div>
           </div>
           <div className='col-lg-6 px-0'>
-            <SliderCarousel />
+            <SliderCarouselSingleRedux />
           </div>
         </div>
-      </div>
+      </div> */}
+      <SliderCarouselRedux/>
     </section>
 
     <section className='container no-top'>
@@ -137,7 +139,7 @@ const homethree = () => (
             <h2 className='style-2'>Trending Drops</h2>
           </div>
         </div>
-        <ColumnNew />
+        <ColumnNewRedux />
       </div>
     </section>
 
@@ -150,7 +152,7 @@ const homethree = () => (
       <div className='container no-top'>
         <div className='row'>
           <div className='col-lg-12 px-0'>
-            <CarouselCollection />
+            <CarouselCollectionRedux />
           </div>
         </div>
       </div>
@@ -162,7 +164,7 @@ const homethree = () => (
           <h2 className='style-2'>Most Valuable</h2>
         </div>
         <div className='col-lg-12'>
-          <AuthorList />
+          <AuthorListRedux />
         </div>
       </div>
     </section>

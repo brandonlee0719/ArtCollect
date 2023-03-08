@@ -1,5 +1,5 @@
 import React from 'react';
-import ColumnAuction from '../components/ColumnAuction';
+import ColumnAuctionRedux from '../components/ColumnAuctionRedux';
 import Footer from '../components/footer';
 
 
@@ -21,7 +21,7 @@ const explore= () => (
   </section>
 
   <section className='container'>
-    <ColumnAuction/>
+    <ColumnAuctionRedux/>
   </section>
 
 

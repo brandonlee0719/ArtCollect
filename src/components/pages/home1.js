@@ -1,8 +1,8 @@
 import React from 'react';
-import SliderCarousel from '../components/SliderCarousel';
-import CarouselCollection from '../components/CarouselCollection';
-import CarouselNew from '../components/CarouselNew';
-import AuthorList from '../components/authorList';
+import SliderCarouselRedux from '../components/SliderCarouselRedux';
+import CarouselCollectionRedux from '../components/CarouselCollectionRedux';
+import CarouselNewRedux from '../components/CarouselNewRedux';
+import AuthorListRedux from '../components/AuthorListRedux';
 import Footer from '../components/footer';
 import { createGlobalStyle } from 'styled-components';
 
@@ -27,7 +27,6 @@ const GlobalStyles = createGlobalStyle`
   }
   .de_countdown{
     right: 10px;
-    color: #fff;
   }
   .author_list_pp{
     margin-left:0;
@@ -43,7 +42,7 @@ const homethree= () => (
       <section className="jumbotron no-bg no-bottom">
         <div className='container-fluid'>
           <div className='row'>
-             <SliderCarousel/>
+             <SliderCarouselRedux/>
           </div>
         </div>
       </section>
@@ -58,7 +57,7 @@ const homethree= () => (
         <div className='container no-top'>
           <div className='row'>
             <div className='col-lg-12 px-0'>
-              <CarouselCollection/>
+              <CarouselCollectionRedux/>
             </div>
           </div>
         </div>
@@ -71,7 +70,7 @@ const homethree= () => (
               <div className="small-border"></div>
           </div>
         </div>
-       <CarouselNew/>
+       <CarouselNewRedux/>
       </section>
 
       <section className='container no-top'>
@@ -81,7 +80,7 @@ const homethree= () => (
               <div className="small-border"></div>
           </div>
           <div className='col-lg-12'>
-            <AuthorList/>
+            <AuthorListRedux/>
           </div>
         </div>
       </section>

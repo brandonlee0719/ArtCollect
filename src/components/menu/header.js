@@ -1,12 +1,18 @@
 import React, { useEffect, useState } from "react";
 import Breakpoint, { BreakpointProvider, setDefaultBreakpoints } from "react-socks";
-import { Link } from '@reach/router';
+import {
+  Link,
+  useNavigate,
+  useMatch,
+  useResolvedPath
+} from "react-router-dom";
 import useOnclickOutside from "react-cool-onclickoutside";
 import {
   Tezos,
   TEZOS_COLLECT_NETWORK,
   TEZOS_COLLECT_WALLET,
 } from "../../utils/constants";
+import auth from '../../core/auth';
 
 setDefaultBreakpoints([
   { xs: 0 },
@@ -14,40 +20,37 @@ setDefaultBreakpoints([
   { xl: 1200 }
 ]);
 
-const NavLink = props => (
-  <Link
-    {...props}
-    getProps={({ isCurrent }) => {
-      // the object returned here is passed to the
-      // anchor element's props
-      return {
-        className: isCurrent ? 'active' : 'non-active',
-      };
-    }}
-  />
-);
+const NavLink = (props) => {
+  let resolved = useResolvedPath(props.to);
+  let match = useMatch({ path: resolved.pathname, end: true });
 
-
+  return (
+    <Link
+      {...props}
+      className={match ? 'active' : 'non-active'}
+    />
+  )
+};
 
 const Header = function () {
+  const navigate = useNavigate();
 
   const [openMenu, setOpenMenu] = React.useState(false);
-  // const [openMenu1, setOpenMenu1] = React.useState(false);
-  // const [openMenu2, setOpenMenu2] = React.useState(false);
-  // const [openMenu3, setOpenMenu3] = React.useState(false);
-  const [openAddress, setOpenAddress] = React.useState(false);
   const [activeAddress, setActiveAddress] = React.useState("");
   const [balance, setBalance] = useState(0);
 
   const handleBtnClick = () => {
     setOpenMenu(!openMenu);
   };
+
   const closeMenu = () => {
     setOpenMenu(false);
   };
   const ref = useOnclickOutside(() => {
     closeMenu();
   });
+
+  const [showmenu, btn_icon] = useState(false);
   const [showpop, btn_icon_pop] = useState(false);
   const [shownot, btn_icon_not] = useState(false);
   const closePop = () => {
@@ -62,31 +65,11 @@ const Header = function () {
   const refpopnot = useOnclickOutside(() => {
     closeNot();
   });
-  // const onConnectWallet = async () => {
-  //   await TEZOS_COLLECT_WALLET.requestPermissions({
-  //     network: TEZOS_COLLECT_NETWORK,
-  //   });
-  //   const _activeAddress = await TEZOS_COLLECT_WALLET.getPKH();
-  //   setActiveAddress(_activeAddress);
 
-  //   let account = await TEZOS_COLLECT_WALLET.client.getActiveAccount();
-  //   console.log(account)
-  //   // try {
-  //   //   let res = await fetchProfile(_activeAddress);
-  //   //   console.log("res", res);
-  //   //   if (res?.wallet) {
-  //   //     if (res?.artist) {
-  //   //       navigate(`/profile/${_activeAddress}/created`);
-  //   //     } else {
-  //   //       navigate(`/profile/${_activeAddress}/owned`);
-  //   //     }
-  //   //   } else {
-  //   //     navigate("/signup");
-  //   //   }
-  //   // } catch (error) {
-  //   //   console.log(error);
-  //   // }
-  // };
+  const handleLogout = () => {
+    auth.clearAppStorage();
+    navigate('/')
+  }
 
   const onConnectWallet = async () => {
     try {
@@ -113,32 +96,22 @@ const Header = function () {
 
   const onDisconnectWallet = async () => {
     setActiveAddress("");
+    handleLogout();
     await TEZOS_COLLECT_WALLET.clearActiveAccount();
   };
 
-  const handleActiveWallet = () => {
-    setOpenAddress(!openAddress)
-  }
-  const closeAddress = () => {
-    setOpenAddress(false);
-  }
-  const walletRef = useOnclickOutside(() => {
-    closeAddress();
-  });
-
-  const [showmenu, btn_icon] = useState(false);
   useEffect(() => {
-    const header = document.getElementById("myHeader");
+    const headers = document.getElementById("myHeader");
     const totop = document.getElementById("scroll-to-top");
-    const sticky = header.offsetTop;
+    const sticky = headers.offsetTop;
     const scrollCallBack = window.addEventListener("scroll", () => {
       btn_icon(false);
       if (window.pageYOffset > sticky) {
-        header.classList.add("sticky");
+        headers.classList.add("sticky");
         totop.classList.add("show");
 
       } else {
-        header.classList.remove("sticky");
+        headers.classList.remove("sticky");
         totop.classList.remove("show");
       } if (window.pageYOffset > sticky) {
         closeMenu();
@@ -148,6 +121,19 @@ const Header = function () {
       window.removeEventListener("scroll", scrollCallBack);
     };
   }, []);
+
+  useEffect(() => {
+    const activeAccount = localStorage.getItem("beacon:active-account");
+    console.log(activeAccount);
+    if (activeAccount != null && activeAccount != "undefined") {
+      const walletAccounts = JSON.parse(localStorage.getItem("beacon:accounts"));
+      const activeWallet = walletAccounts.find(({ accountIdentifier }) => accountIdentifier === activeAccount);
+      const activeAddress = activeWallet.address;
+      setActiveAddress(activeAddress);
+      getWalletBalance(activeAddress);
+    }
+  }, [activeAddress]);
+
   return (
     <header id="myHeader" className='navbar white'>
       <div className='container'>
@@ -157,7 +143,7 @@ const Header = function () {
               <NavLink to="/">
                 <div className="d-flex align-items-center">
                   <img
-                    src="./img/logo.png"
+                    src="../../img/logo.png"
                     className="img-fluid logo-image"
                     alt="#"
                   />
@@ -213,7 +199,7 @@ const Header = function () {
                   <div className='navbar-item'>
                     <a onClick={() => {
                       btn_icon(!showmenu);
-                      window.open("https://art-collecting.com/blogs.htm", "_blank");
+                      window.open("https://medium.com/@teamartcollect", "_blank");
                     }}>
                       Blog
                     </a>
@@ -264,7 +250,7 @@ const Header = function () {
                   </NavLink>
                 </div>
                 <div className='navbar-item'>
-                  <a onClick={() => window.open("https://art-collecting.com/blogs.htm", "_blank")}>
+                  <a onClick={() => window.open("https://medium.com/@teamartcollect", "_blank")}>
                     Blog
                     <span className='lines'></span>
                   </a>
@@ -273,7 +259,7 @@ const Header = function () {
             </Breakpoint>
           </BreakpointProvider>
 
-          <div ref={walletRef} className='mainside'>
+          <div className='mainside'>
             {activeAddress !== ""
               // ? <div className="btn-main" onClick={handleActiveWallet}>
               //   <i className="icon_wallet_alt"></i>
@@ -354,7 +340,7 @@ const Header = function () {
                   {showpop &&
                     <div className="popshow">
                       <div className="d-name">
-                        <h4>Monica Lucas</h4>
+                        <h4>{auth.getUserInfo() ? auth.getUserInfo().username: "Art Collect"}</h4>
                         <span className="name" onClick={() => window.open("", "_self")}>Set display name</span>
                       </div>
                       <div className="d-balance">
@@ -370,12 +356,12 @@ const Header = function () {
                       <ul className="de-submenu-profile">
                         <li>
                           <span>
-                            <i className="fa fa-user"></i><NavLink to="/Author">My Profile</NavLink>
+                            <i className="fa fa-user"></i><NavLink to="/profile/1">My Profile</NavLink>
                           </span>
                         </li>
                         <li>
                           <span>
-                            <i className="fa fa-pencil"></i><NavLink to="/Author">Edit profile</NavLink>
+                            <i className="fa fa-pencil"></i><NavLink to="/profile/1">Edit profile</NavLink>
                           </span>
                         </li>
                         <li>
@@ -391,7 +377,8 @@ const Header = function () {
               : <div className="btn-main" onClick={onConnectWallet}>
                 <i className="icon_wallet_alt"></i>
                 <span>Connect Wallet</span>
-              </div>}
+              </div>
+            }
           </div>
 
         </div>
