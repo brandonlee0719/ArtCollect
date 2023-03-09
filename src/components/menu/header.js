@@ -40,8 +40,6 @@ const Header = function () {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const authorsState = useSelector(selectors.authorsState);
-  console.log("authorsState.data:", authorsState.data);
-  // const author = authorsState.data ? authorsState.data[0] : {};
   const [author, setAuthor] = useState({});
 
   const [openMenu, setOpenMenu] = useState(false);
