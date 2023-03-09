@@ -7,7 +7,7 @@ export const TEZOS_COLLECT_NETWORK = {
 };
 
 const MAINNET_RPC_URL = "https://mainnet.api.tez.ie";
-const GHOSTNET_RPC_URL = "https://ghostnet.ecadinfra.com";
+const GHOSTNET_RPC_URL = "https://ghostnet.smartpy.io/";
 
 const TEZOS_COLLECT_RPC_URL =
   TEZOS_COLLECT_NETWORK.type === NetworkType.GHOSTNET
@@ -24,7 +24,7 @@ export const TEZOS_COLLECT_WALLET = new BeaconWallet({
 });
 
 const MARKETPLACE_ADDRESSES = {
-  ghostnet: "KT1JZsjLVE4Dx7B7xDiD459XBo7aPejnrv86",
+  ghostnet: "KT1Kj6PQERCAbFu2Y6N8m1ucDv4bFJJLTWgt",
   kathmandunet: "",
   mainnet: "",
   mondaynet: "",
@@ -40,7 +40,7 @@ const MARKETPLACE_ADDRESSES = {
 };
 
 const NFT_ADDRESSES = {
-  ghostnet: "KT1Q3pTRa3s1ZXUMRaHUwqMYdDT7iWL9AXYx",
+  ghostnet: "KT1Qi4n8vTeK6CNQACFABFx5cLNDD1MnCp63",
   kathmandunet: "",
   mainnet: "",
   mondaynet: "",

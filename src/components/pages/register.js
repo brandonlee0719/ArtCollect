@@ -3,7 +3,7 @@ import Footer from '../components/footer';
 import { createGlobalStyle } from 'styled-components';
 import { Form, Formik, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import auth, { authorUrl, registerUrl } from '../../core/auth';
+import auth, { apiKey, registerUrl, postAuthorUrl } from '../../core/auth';
 import request from '../../core/auth/request';
 import { useNavigate } from 'react-router-dom';
 
@@ -42,6 +42,8 @@ const initialValues = {
   password_confirmation: ''
 };
 
+const wallet = localStorage.getItem("wallet");
+
 const Register = () => {
   const navigate = useNavigate();
   const redirectUser = (path) => {
@@ -50,12 +52,22 @@ const Register = () => {
 
   const handleSubmitForm = async (data) => {
     const requestURL = registerUrl;
-
-    await request(requestURL, { method: 'POST', body: data })
-      .then((response) => {
-        // console.log(response)
-        auth.setToken(response.jwt, false);
-        auth.setUserInfo(response.user, false);
+    let config = {
+      headers: {
+        'Authorization': 'Bearer ' + apiKey
+      }
+    }
+    await request(requestURL, { method: 'POST', body: data, config })
+      .then(async (response) => {
+        auth.setToken(response.jwt, true);
+        auth.setUserInfo(response.user, true);
+        let authorData = {
+          "data": {
+            "username": response.user.username,
+            "wallet": wallet
+          }
+        }
+        await request(postAuthorUrl, { method: 'POST', body: authorData, config })
         redirectUser('/Profile/' + response.user.id);
       }).catch((err) => {
         console.log(err);
@@ -82,7 +94,6 @@ const Register = () => {
               validateOnMount={validationSchema.isValidSync(initialValues)}
               onSubmit={async (values, { setSubmitting, resetForm }) => {
                 // const submitData = pick(values, [...requiredFields]);
-                console.log(values)
                 setSubmitting(true);
                 await handleSubmitForm(values);
                 setSubmitting(false);
