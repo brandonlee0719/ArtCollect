@@ -247,8 +247,8 @@ const Profile = () => {
                                                 <Form>
                                                     <h5>Profile image <i className="fa fa-info-circle id-color-2" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Recommend 400 x 400. Max size: 50MB. Click the image to upload." aria-label="Recommend 400 x 400. Max size: 50MB. Click the image to upload."></i></h5>
                                                     <img
-                                                        // src={(author && author.avatar && author.avatar.url) ? profileImageTemp ? profileImageTemp : (api.baseUrl + author.avatar.url) : '../../img/author_single/author_thumbnail.jpg'}
-                                                        src={profileImageTemp ? profileImageTemp : (author && author.avatar && author.avatar.url) ? (api.baseUrl + author.avatar.url) : '../../img/author_single/author_thumbnail.jpg'}
+                                                        // src={(author && author.avatar && author.avatar.url) ? profileImageTemp ? profileImageTemp : (api.baseUrl + author.avatar.url) : '../../img/misc/avatar-2.jpg'}
+                                                        src={profileImageTemp ? profileImageTemp : (author && author.avatar && author.avatar.url) ? (api.baseUrl + author.avatar.url) : '../../img/misc/avatar-2.jpg'}
                                                         id="click_profile_img"
                                                         className="d-profile-img-edit img-fluid"
                                                         alt=""

@@ -15,7 +15,7 @@ import {
 import auth from '../../core/auth';
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAuthorList } from "../../store/actions/thunks";
-import * as selectors from '../../store/selectors'
+import * as selectors from '../../store/selectors';
 import api from "../../core/api";
 
 setDefaultBreakpoints([
@@ -358,7 +358,7 @@ const Header = function () {
                   }
                 </div>
                 <div id="de-click-menu-profile" className="de-menu-profile" onClick={() => btn_icon_pop(!showpop)} ref={refpop}>
-                  <img src={(author && author.avatar && author.avatar.url) ? (api.baseUrl + author.avatar.url) : "../../img/author_single/author_thumbnail.jpg"} alt="" />
+                  <img src={(author && author.avatar && author.avatar.url) ? (api.baseUrl + author.avatar.url) : "../../img/misc/avatar-2.jpg"} alt="" />
                   {showpop &&
                     <div className="popshow">
                       <div className="d-name">
