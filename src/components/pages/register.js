@@ -42,6 +42,8 @@ const initialValues = {
   password_confirmation: ''
 };
 
+const wallet = localStorage.getItem("wallet");
+
 const Register = () => {
   const navigate = useNavigate();
   const redirectUser = (path) => {
@@ -57,12 +59,12 @@ const Register = () => {
     }
     await request(requestURL, { method: 'POST', body: data, config })
       .then(async (response) => {
-        // console.log(response)
-        auth.setToken(response.jwt, false);
-        auth.setUserInfo(response.user, false);
+        auth.setToken(response.jwt, true);
+        auth.setUserInfo(response.user, true);
         let authorData = {
           "data": {
-            "username": response.user.username
+            "username": response.user.username,
+            "wallet": wallet
           }
         }
         await request(postAuthorUrl, { method: 'POST', body: authorData, config })
@@ -92,7 +94,6 @@ const Register = () => {
               validateOnMount={validationSchema.isValidSync(initialValues)}
               onSubmit={async (values, { setSubmitting, resetForm }) => {
                 // const submitData = pick(values, [...requiredFields]);
-                console.log(values)
                 setSubmitting(true);
                 await handleSubmitForm(values);
                 setSubmitting(false);

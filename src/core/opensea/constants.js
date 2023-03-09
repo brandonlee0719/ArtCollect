@@ -33,7 +33,7 @@ export async function connectWallet() {
 }
 
 export function toUnitAmount(baseAmount, tokenContract = null) {
-  const decimals = tokenContract && tokenContract.decimals != null
+  const decimals = tokenContract && tokenContract.decimals !==null
     ? tokenContract.decimals
     : DEFAULT_DECIMALS
 
@@ -42,7 +42,7 @@ export function toUnitAmount(baseAmount, tokenContract = null) {
 }
 
 export function toBaseUnitAmount(unitAmount, tokenContract = null) {
-  const decimals = tokenContract && tokenContract.decimals != null
+  const decimals = tokenContract && tokenContract.decimals !==null
     ? tokenContract.decimals
     : DEFAULT_DECIMALS
 

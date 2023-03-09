@@ -13,6 +13,10 @@ import {
   TEZOS_COLLECT_WALLET,
 } from "../../utils/constants";
 import auth from '../../core/auth';
+import { useDispatch, useSelector } from "react-redux";
+import { fetchAuthorList } from "../../store/actions/thunks";
+import * as selectors from '../../store/selectors'
+import api from "../../core/api";
 
 setDefaultBreakpoints([
   { xs: 0 },
@@ -34,10 +38,16 @@ const NavLink = (props) => {
 
 const Header = function () {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const authorsState = useSelector(selectors.authorsState);
+  console.log("authorsState.data:", authorsState.data);
+  // const author = authorsState.data ? authorsState.data[0] : {};
+  const [author, setAuthor] = useState({});
 
-  const [openMenu, setOpenMenu] = React.useState(false);
-  const [activeAddress, setActiveAddress] = React.useState("");
+  const [openMenu, setOpenMenu] = useState(false);
+  const [activeAddress, setActiveAddress] = useState("");
   const [balance, setBalance] = useState(0);
+  const [userInfo, setUserInfo] = useState(null);
 
   const handleBtnClick = () => {
     setOpenMenu(!openMenu);
@@ -78,6 +88,7 @@ const Header = function () {
       });
       const _activeAddress = await TEZOS_COLLECT_WALLET.getPKH();
       setActiveAddress(_activeAddress);
+      localStorage.setItem("wallet", _activeAddress);
       await getWalletBalance(_activeAddress);
     } catch (error) {
       console.error(error);
@@ -96,6 +107,7 @@ const Header = function () {
 
   const onDisconnectWallet = async () => {
     setActiveAddress("");
+    setAuthor({});
     handleLogout();
     await TEZOS_COLLECT_WALLET.clearActiveAccount();
   };
@@ -124,8 +136,8 @@ const Header = function () {
 
   useEffect(() => {
     const activeAccount = localStorage.getItem("beacon:active-account");
-    console.log(activeAccount);
-    if (activeAccount != null && activeAccount != "undefined") {
+
+    if (activeAccount !== null && activeAccount !== "undefined") {
       const walletAccounts = JSON.parse(localStorage.getItem("beacon:accounts"));
       const activeWallet = walletAccounts.find(({ accountIdentifier }) => accountIdentifier === activeAccount);
       const activeAddress = activeWallet.address;
@@ -133,6 +145,18 @@ const Header = function () {
       getWalletBalance(activeAddress);
     }
   }, [activeAddress]);
+
+  useEffect(() => {
+    const _userInfo = auth.getUserInfo();
+    setUserInfo(_userInfo);
+    _userInfo !== null && dispatch(fetchAuthorList(_userInfo.id));
+  }, []);
+
+  useEffect(() => {
+    if (authorsState.data && authorsState.data.length > 0)
+      setAuthor(authorsState.data[0]);
+  }, [authorsState.data])
+
 
   return (
     <header id="myHeader" className='navbar white'>
@@ -336,11 +360,11 @@ const Header = function () {
                   }
                 </div>
                 <div id="de-click-menu-profile" className="de-menu-profile" onClick={() => btn_icon_pop(!showpop)} ref={refpop}>
-                  <img src="../../img/author_single/author_thumbnail.jpg" alt="" />
+                  <img src={(author && author.avatar && author.avatar.url) ? (api.baseUrl + author.avatar.url) : "../../img/author_single/author_thumbnail.jpg"} alt="" />
                   {showpop &&
                     <div className="popshow">
                       <div className="d-name">
-                        <h4>{auth.getUserInfo() ? auth.getUserInfo().username: "Art Collect"}</h4>
+                        <h4>{author && author.username ? author.username : "ArtCollecter"}</h4>
                         <span className="name" onClick={() => window.open("", "_self")}>Set display name</span>
                       </div>
                       <div className="d-balance">
@@ -356,7 +380,7 @@ const Header = function () {
                       <ul className="de-submenu-profile">
                         <li>
                           <span>
-                            <i className="fa fa-user"></i><NavLink to="/profile/1">My Profile</NavLink>
+                            <i className="fa fa-user"></i><NavLink to={`/profile/${author && author.id ? author.id : '0'}`}>My Profile</NavLink>
                           </span>
                         </li>
                         {/* <li>
