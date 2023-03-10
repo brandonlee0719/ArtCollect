@@ -20,7 +20,7 @@ export const fetchNftsBreakdown = (authorId, isMusic = false) => async (dispatch
       cancelToken: Canceler.token,
       params: {}
     });
-    console.log(data)
+  
     dispatch(actions.getNftBreakdown.success(data.data));
   } catch (err) {
     dispatch(actions.getNftBreakdown.failure(err));

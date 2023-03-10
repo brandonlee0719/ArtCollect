@@ -106,7 +106,7 @@ const app= () => (
       <Route element={<Works />} path="/works" />
       <Route element={<News />} path="/news" />
       <Route element={<NewsSingle />} path="/news/:postId" />
-      <Route element={<ProtectedRoute><Create /></ProtectedRoute>} path="/create" />
+      <Route element={<Create />} path="/create" />
       <Route element={<Create2 />} path="/create2" />
       <Route element={<Create3 />} path="/create3" />
       <Route element={<Createoption />} path="/createOptions" />
