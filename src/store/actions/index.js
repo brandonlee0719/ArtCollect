@@ -33,6 +33,12 @@ export const getAuthorList = asyncAction(
     'nft/GET_AUTHOR_LIST_FAIL'
 )();
 
+export const getAuthorUser = asyncAction(
+    'nft/GET_AUTHOR_USER',
+    'nft/GET_AUTHOR_USER_SUCCESS',
+    'nft/GET_AUTHOR_USER_FAIL'
+)();
+
 export const getAuthorRanking = asyncAction(
     'nft/GET_AUTHOR_RANKING',
     'nft/GET_AUTHOR_RANKING_SUCCESS',

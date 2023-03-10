@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Footer from '../components/footer';
 import { createGlobalStyle } from 'styled-components';
 import { Form, Formik, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import auth, { apiKey, registerUrl, postAuthorUrl } from '../../core/auth';
+import auth, { apiKey, registerUrl, postAuthorUrl, authorUrl } from '../../core/auth';
 import request from '../../core/auth/request';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { fetchAuthorListWallet } from "../../store/actions/thunks";
+import * as selectors from '../../store/selectors';
 
 const GlobalStyles = createGlobalStyle`
   header#myHeader.navbar.white {
@@ -46,6 +50,10 @@ const wallet = localStorage.getItem("wallet");
 
 const Register = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const authorState = useSelector(selectors.authorUserState);
+  const author = authorState.data;
+
   const redirectUser = (path) => {
     navigate(path);
   }
@@ -67,19 +75,33 @@ const Register = () => {
             "wallet": wallet
           }
         }
-        await request(postAuthorUrl, { method: 'POST', body: authorData, config })
-        redirectUser('/Profile/' + response.user.id);
+        updateAuthor(authorData, config);
       }).catch((err) => {
         console.log(err);
       });
   }
 
+  const updateAuthor = async(authorData, config) => {
+    await request(authorUrl(author.id), { method: 'PUT', body: authorData, config })
+      .then((response) => {
+        console.log(response)
+        redirectUser('/Profile/' + author.id);
+      }).catch((err) => {
+        console.log(err);
+      });
+  }
+
+  useEffect(() => {
+    if (wallet)
+      dispatch(fetchAuthorListWallet(wallet));
+  }, []);
+
   return (
-    <div style={{height: '100%', display: "flex", flexDirection: 'column'}}>
+    <div style={{ height: '100%', display: "flex", flexDirection: 'column' }}>
       <GlobalStyles />
 
 
-      <section className='container' style={{flex: 1, display: 'flex', flexDirection:'column', justifyContent: 'center'}}>
+      <section className='container' style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
         <div className="row">
           <div className='spacer-double'></div>
           <div className="col-md-8 offset-md-2">

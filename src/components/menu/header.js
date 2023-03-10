@@ -14,7 +14,7 @@ import {
 } from "../../utils/constants";
 import auth from '../../core/auth';
 import { useDispatch, useSelector } from "react-redux";
-import { fetchAuthorList } from "../../store/actions/thunks";
+import { fetchAuthorListWallet } from "../../store/actions/thunks";
 import * as selectors from '../../store/selectors';
 import api from "../../core/api";
 
@@ -39,8 +39,8 @@ const NavLink = (props) => {
 const Header = function () {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const authorsState = useSelector(selectors.authorsState);
-  const [author, setAuthor] = useState({});
+  const authorState = useSelector(selectors.authorUserState);
+  const author = authorState.data;
 
   const [openMenu, setOpenMenu] = useState(false);
   const [activeAddress, setActiveAddress] = useState("");
@@ -89,6 +89,7 @@ const Header = function () {
       setActiveAddress(_activeAddress);
       localStorage.setItem("wallet", _activeAddress);
       await getWalletBalance(_activeAddress);
+      dispatch(fetchAuthorListWallet(_activeAddress));
     } catch (error) {
       console.error(error);
     }
@@ -106,7 +107,6 @@ const Header = function () {
 
   const onDisconnectWallet = async () => {
     setActiveAddress("");
-    setAuthor({});
     handleLogout();
     await TEZOS_COLLECT_WALLET.clearActiveAccount();
   };
@@ -146,16 +146,30 @@ const Header = function () {
   }, [activeAddress]);
 
   useEffect(() => {
-    const _userInfo = auth.getUserInfo();
-    setUserInfo(_userInfo);
-    _userInfo !== null && dispatch(fetchAuthorList(_userInfo.id));
+    if (localStorage.getItem('wallet'))
+      dispatch(fetchAuthorListWallet(localStorage.getItem('wallet')));
   }, []);
 
-  useEffect(() => {
-    if (authorsState.data && authorsState.data.length > 0)
-      setAuthor(authorsState.data[0]);
-  }, [authorsState.data])
-
+  // useEffect(() => {
+  //   async function fetchData() {
+  //     if (!author && localStorage.getItem('wallet')) {
+  //       console.log("author------------>", author);
+  //       let config = {
+  //         headers: {
+  //           'Authorization': 'Bearer ' + apiKey
+  //         }
+  //       }
+  //       let authorData = {
+  //         "data": {
+  //           "username": "ArtCollector",
+  //           "wallet": localStorage.getItem('wallet')
+  //         }
+  //       }
+  //       await request(postAuthorUrl, { method: 'POST', body: authorData, config })
+  //     }
+  //   }
+  //   fetchData();
+  // }, [author])
 
   return (
     <header id="myHeader" className='navbar white'>

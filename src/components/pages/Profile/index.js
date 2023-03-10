@@ -8,7 +8,7 @@ import auth, { apiKey, authorUrl } from '../../../core/auth';
 import request from '../../../core/auth/request';
 import { useNavigate, useParams } from 'react-router-dom';
 import api from "../../../core/api";
-import { fetchAuthorList } from "../../../store/actions/thunks";
+import { fetchAuthorListWallet } from "../../../store/actions/thunks";
 import * as selectors from '../../../store/selectors';
 import axios from "axios";
 
@@ -53,8 +53,9 @@ const Profile = () => {
     const { authorId } = useParams();
     const navigate = useNavigate();
     const jwt = auth.getToken();
-    const authorsState = useSelector(selectors.authorsState);
-    const author = authorsState.data ? authorsState.data[0] : null;
+
+    const authorState = useSelector(selectors.authorUserState);
+    const author = authorState.data;
     const wallet = localStorage.getItem('wallet');
 
     const [updateProfile, setUpdateProfile] = useState(false);
@@ -154,8 +155,9 @@ const Profile = () => {
     }
 
     useEffect(() => {
-        dispatch(fetchAuthorList(authorId));
-    }, [dispatch, authorId]);
+        if (wallet)
+            dispatch(fetchAuthorListWallet(wallet));
+    }, []);
 
     return (
         <div>

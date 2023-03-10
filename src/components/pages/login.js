@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Footer from '../components/footer';
 import { createGlobalStyle } from 'styled-components';
 import { Form, Formik, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import auth, { loginUrl } from '../../core/auth';
+import auth, { apiKey, loginUrl } from '../../core/auth';
 import request from '../../core/auth/request';
 import { useNavigate } from 'react-router-dom';
+import { fetchAuthorListWallet } from '../../store/actions/thunks';
+import { useDispatch, useSelector } from 'react-redux';
+import * as selectors from '../../store/selectors';
 
 const GlobalStyles = createGlobalStyle`
   header#myHeader.navbar.white {
@@ -38,22 +41,36 @@ const initialValues = {
 
 const Logintwo= () => { 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const authorState = useSelector(selectors.authorUserState);
+  const author = authorState.data;
+  const wallet = localStorage.getItem('wallet');
+
   const redirectUser = (path) => {
     navigate(path);
   }
   
   const handleSubmitForm = async (data) => {
     const requestURL = loginUrl;
-
-    await request(requestURL, { method: 'POST', body: data})
+    let config = {
+      headers: {
+        'Authorization': 'Bearer ' + apiKey
+      }
+    }
+    await request(requestURL, { method: 'POST', body: data, config})
       .then((response) => {
         auth.setToken(response.jwt, true);
         auth.setUserInfo(response.user, true);
-        redirectUser(`/profile/${response.user.id}`);
+        redirectUser(`/profile/${author.id}`);
       }).catch((err) => {
         console.log(err);
       });
   }
+
+  useEffect(() => {
+    if (wallet)
+      dispatch(fetchAuthorListWallet(wallet));
+  }, []);
 
 
   return (

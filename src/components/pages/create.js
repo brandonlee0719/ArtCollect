@@ -6,7 +6,7 @@ import { createGlobalStyle } from 'styled-components';
 import auth, { apiKey } from '../../core/auth';
 import { nftUrl } from "../../core/nft";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchAuthorList } from "../../store/actions/thunks";
+import { fetchAuthorList, fetchAuthorListWallet } from "../../store/actions/thunks";
 import * as selectors from '../../store/selectors';
 import api from "../../core/api";
 import { mintNFT } from "../../store/actions/contractAction";
@@ -32,9 +32,9 @@ const GlobalStyles = createGlobalStyle`
 
 const CreatePage = () => {
   const dispatch = useDispatch();
-  const authorsState = useSelector(selectors.authorsState);
-  const jwt = auth.getToken();
-  const [author, setAuthor] = useState({});
+  const authorState = useSelector(selectors.authorUserState);
+  const author = authorState.data;
+  const wallet = localStorage.getItem('wallet');
 
   const [isActive, setActive] = useState(false);
   const [file, setFile] = useState(null);
@@ -180,15 +180,15 @@ const CreatePage = () => {
     setActive(false);
   };
 
-  useEffect(() => {
-    const _userInfo = auth.getUserInfo();
-    _userInfo !== null && dispatch(fetchAuthorList(_userInfo.id));
-  }, []);
+  // useEffect(() => {
+  //   const _userInfo = auth.getUserInfo();
+  //   _userInfo !== null && dispatch(fetchAuthorList(_userInfo.id));
+  // }, []);
 
   useEffect(() => {
-    if (authorsState.data && authorsState.data.length > 0)
-      setAuthor(authorsState.data[0]);
-  }, [authorsState.data])
+    if (wallet)
+      dispatch(fetchAuthorListWallet(wallet));
+  }, []);
 
   return (
     <div>
