@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Footer from '../components/footer';
 import { createGlobalStyle } from 'styled-components';
 import { Form, Formik, Field, ErrorMessage } from 'formik';
@@ -54,6 +54,8 @@ const Register = () => {
   const authorState = useSelector(selectors.authorUserState);
   const author = authorState.data;
 
+  const [success, setSuccess] = useState(false);
+
   const redirectUser = (path) => {
     navigate(path);
   }
@@ -72,7 +74,8 @@ const Register = () => {
         let authorData = {
           "data": {
             "username": response.user.username,
-            "wallet": wallet
+            "wallet": wallet,
+            "userid": response.user.id
           }
         }
         updateAuthor(authorData, config);
@@ -81,11 +84,12 @@ const Register = () => {
       });
   }
 
-  const updateAuthor = async(authorData, config) => {
+  const updateAuthor = async (authorData, config) => {
     await request(authorUrl(author.id), { method: 'PUT', body: authorData, config })
       .then((response) => {
         console.log(response)
-        redirectUser('/Profile/' + author.id);
+        // redirectUser('/Profile/' + author.id);
+        setSuccess(true);
       }).catch((err) => {
         console.log(err);
       });
@@ -162,7 +166,7 @@ const Register = () => {
                             <ErrorMessage name="password_confirmation" component="div" />
                           </div>
                         </div>
-
+                        <h3>{success ? "Successfully Registered!" : ""}</h3>
                         <div className="col-md-12">
                           <div id='submit' className="pull-left">
                             <input type='submit' id='send_message' value='Register Now' className="btn btn-main color-2" />

@@ -41,6 +41,7 @@ const Header = function () {
   const dispatch = useDispatch();
   const authorState = useSelector(selectors.authorUserState);
   const author = authorState.data;
+  console.log("author==========>", author)
 
   const [openMenu, setOpenMenu] = useState(false);
   const [activeAddress, setActiveAddress] = useState("");

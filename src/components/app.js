@@ -1,5 +1,5 @@
 import React from 'react';
-import { Routes, Route, Navigate, useLocation } from "react-router-dom";
+import { Routes, Route, Navigate, useLocation, json } from "react-router-dom";
 import ScrollToTopBtn from './menu/ScrollToTop';
 import Header from './menu/header';
 import Home from './pages/home';
@@ -53,11 +53,18 @@ const GlobalStyles = createGlobalStyle`
 
 const ProtectedRoute = ({ children }) => {
   let location = useLocation();
-  const isAuth = auth.getToken() !== null || localStorage.getItem('wallet') !== null;
-  console.log(isAuth)
-  return (
-    isAuth ? children : <Navigate to="/login" state={{ from: location }} replace />
-  )
+
+  const author = localStorage.getItem("author");
+  const wallet = localStorage.getItem("wallet");
+
+  if (author !== "undefined") {
+    let authorData = JSON.parse(author);
+    const isAuth = (wallet != null && authorData.userid != null) ? true : false;
+    return (
+      isAuth ? children : <Navigate to="/register" state={{ from: location }} replace />
+    )
+  }
+  return <Navigate to="/register" state={{ from: location }} replace />
 };
 
 const app = () => (

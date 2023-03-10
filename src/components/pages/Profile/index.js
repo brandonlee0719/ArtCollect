@@ -84,7 +84,7 @@ const Profile = () => {
     }
 
     const handleSubmitForm = async (data) => {
-        const requestURL = authorUrl(authorId);
+        const requestURL = authorUrl(author.id);
         let responseData = {
             "data": data
         }
@@ -110,7 +110,7 @@ const Profile = () => {
 
         formData.append('files', file)
         formData.append('ref', 'api::author.author') // link the image to a content type
-        formData.append('refId', authorId) // link the image to a specific entry
+        formData.append('refId', author.id) // link the image to a specific entry
         formData.append('field', field) // link the image to a specific field
         console.log(field)
         await axios({
@@ -118,7 +118,7 @@ const Profile = () => {
             url: `${api.baseUrl}/api/upload`,
             data: formData,
             headers: {
-                Authorization: `Bearer ${jwt}`,
+                Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjc4NDc5MTQzLCJleHAiOjE2ODEwNzExNDN9.wEJYN1v3hk1sclVNy0HFPGiTEY6lvHEYUMVs5fFKUKE`,
                 "Content-Type": "multipart/form-data"
             }
         }).then(res => {

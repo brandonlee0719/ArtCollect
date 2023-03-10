@@ -29,7 +29,7 @@ export const fetchAuthorListWallet = (wallet) => async (dispatch) => {
       params: {}
     });
 
-    if (!data.data.attributes.results[0]) {
+    if (!data.data.attributes.results[0] && !localStorage.getItem("author")) {
       let config = {
         headers: {
           'Authorization': 'Bearer ' + apiKey
@@ -43,7 +43,7 @@ export const fetchAuthorListWallet = (wallet) => async (dispatch) => {
       }
       await request(postAuthorUrl, { method: 'POST', body: authorData, config })
     }
-
+    localStorage.setItem("author", JSON.stringify(data.data.attributes.results[0]));
     dispatch(actions.getAuthorUser.success(data.data.attributes.results[0]));
   } catch (err) {
     dispatch(actions.getAuthorUser.failure(err));
