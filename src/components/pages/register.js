@@ -75,11 +75,11 @@ const Register = () => {
   }
 
   return (
-    <div>
+    <div style={{height: '100%', display: "flex", flexDirection: 'column'}}>
       <GlobalStyles />
 
 
-      <section className='container'>
+      <section className='container' style={{flex: 1, display: 'flex', flexDirection:'column', justifyContent: 'center'}}>
         <div className="row">
           <div className='spacer-double'></div>
           <div className="col-md-8 offset-md-2">

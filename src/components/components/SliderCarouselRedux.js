@@ -13,6 +13,7 @@ const SliderCarouselRedux = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const nftsState = useSelector(selectors.nftShowcaseState);
+    console.log("nftsState555555555555", nftsState)
     const nfts = nftsState.data ? nftsState.data : [];
     
     useEffect(() => {

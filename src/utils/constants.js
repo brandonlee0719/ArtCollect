@@ -1,4 +1,4 @@
-import { ColorMode, NetworkType } from "@airgap/beacon-sdk";
+import { ColorMode, NetworkType, BeaconEvent, defaultEventCallbacks } from "@airgap/beacon-sdk";
 import { BeaconWallet } from "@taquito/beacon-wallet";
 import { TezosToolkit } from "@taquito/taquito";
 
@@ -20,11 +20,21 @@ export const NFT_STORAGE_KEY =
 export const TEZOS_COLLECT_WALLET = new BeaconWallet({
   name: "Art Collect",
   preferredNetwork: TEZOS_COLLECT_NETWORK.type,
-  colorMode: ColorMode.LIGHT
+  colorMode: ColorMode.LIGHT,
+  disableDefaultEvents: false, // Disable all events / UI. This also disables the pairing alert.
+  eventHandlers: {
+    // To keep the pairing alert, we have to add the following default event handlers back
+    [BeaconEvent.PAIR_INIT]: {
+      handler: defaultEventCallbacks.PAIR_INIT
+    },
+    [BeaconEvent.PAIR_SUCCESS]: {
+      handler: data => { return (data.publicKey); }
+    }
+  }
 });
 
 const MARKETPLACE_ADDRESSES = {
-  ghostnet: "KT1Kj6PQERCAbFu2Y6N8m1ucDv4bFJJLTWgt",
+  ghostnet: "KT1WGPXo5HqJ8PBRfSeebqf1p8jLXeN6prZM",
   kathmandunet: "",
   mainnet: "",
   mondaynet: "",

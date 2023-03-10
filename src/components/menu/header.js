@@ -81,6 +81,7 @@ const Header = function () {
 
   const onConnectWallet = async () => {
     try {
+      Tezos.setWalletProvider(TEZOS_COLLECT_WALLET);
       await TEZOS_COLLECT_WALLET.requestPermissions({
         network: TEZOS_COLLECT_NETWORK,
       });

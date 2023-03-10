@@ -1,13 +1,14 @@
 import {
-    MARKETPLACE_ADDRESSES,
-    NFT_ADDRESSES,
+    MARKETPLACE_CONTRACT_ADDRESS,
+    NFT_CONTRACT_ADDRESS,
+    TEZOS_COLLECT_WALLET,
 } from "../../utils/constants";
 import axios from "axios";
 
 export const fetchContractData = ({ Tezos }) => {
     return async (dispatch, getState) => {
         try {
-            const contract = await Tezos.wallet.at(MARKETPLACE_ADDRESSES.ghostnet);
+            const contract = await Tezos.wallet.at(MARKETPLACE_CONTRACT_ADDRESS);
 
             const storage = await contract.storage();
             dispatch({ type: "SET_VALUE", payload: storage.toNumber() });
@@ -21,7 +22,7 @@ export const fetchContractData = ({ Tezos }) => {
 export const incrementData = ({ Tezos }) => {
     return async (dispatch, getState) => {
         try {
-            const contract = await Tezos.wallet.at(MARKETPLACE_ADDRESSES.ghostnet);
+            const contract = await Tezos.wallet.at(MARKETPLACE_CONTRACT_ADDRESS);
 
             const op = await contract.methods.increment(1).send();
             await op.confirmation();
@@ -36,7 +37,7 @@ export const incrementData = ({ Tezos }) => {
 export const decrementData = ({ Tezos }) => {
     return async (dispatch, getState) => {
         try {
-            const contract = await Tezos.wallet.at(MARKETPLACE_ADDRESSES.ghostnet);
+            const contract = await Tezos.wallet.at(MARKETPLACE_CONTRACT_ADDRESS);
 
             const op = await contract.methods.decrement(1).send();
             await op.confirmation();
@@ -61,10 +62,10 @@ export const fetchData = () => {
     return async (dispatch) => {
         try {
             const response = await axios.get(
-                `https://api.ghostnet.tzkt.io/v1/contracts/${MARKETPLACE_ADDRESSES.ghostnet}/bigmaps/data/keys`
+                `https://api.ghostnet.tzkt.io/v1/contracts/${MARKETPLACE_CONTRACT_ADDRESS}/bigmaps/data/keys`
             );
             const response1 = await axios.get(
-                `https://api.ghostnet.tzkt.io/v1/contracts/${NFT_ADDRESSES.ghostnet}/bigmaps/token_metadata/keys`
+                `https://api.ghostnet.tzkt.io/v1/contracts/${NFT_CONTRACT_ADDRESS}/bigmaps/token_metadata/keys`
             );
             const d1 = response.data;
             const d2 = response1.data;
@@ -94,7 +95,8 @@ export const fetchData = () => {
 export const mintNFT = ({ Tezos, amount, metadata }) => {
     return async (dispatch) => {
         try {
-            const contract = await Tezos.wallet.at(MARKETPLACE_ADDRESSES.ghostnet);
+            Tezos.setWalletProvider(TEZOS_COLLECT_WALLET);
+            const contract = await Tezos.wallet.at(MARKETPLACE_CONTRACT_ADDRESS);
             let bytes = "";
             for (var i = 0; i < metadata.length; i++) {
                 bytes += metadata.charCodeAt(i).toString(16).slice(-4);
@@ -111,7 +113,7 @@ export const mintNFT = ({ Tezos, amount, metadata }) => {
 export const collectNFT = ({ Tezos, amount, id }) => {
     return async (dispatch) => {
         try {
-            const contract = await Tezos.wallet.at(MARKETPLACE_ADDRESSES.ghostnet);
+            const contract = await Tezos.wallet.at(MARKETPLACE_CONTRACT_ADDRESS);
 
             const op = await contract.methods
                 .collect(id)

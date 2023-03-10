@@ -57,10 +57,10 @@ const Logintwo= () => {
 
 
   return (
-    <div>
+    <div style={{height: '100%', display: "flex", flexDirection: 'column'}}>
     <GlobalStyles/>
 
-      <section className='jumbotron breadcumb no-bg' style={{backgroundImage: `url(${'./img/background/10.jpg'})`}}>
+      <section className='jumbotron breadcumb no-bg' style={{flex: 1, display: 'flex', flexDirection:'column', justifyContent: 'center', backgroundImage: `url(${'./img/background/10.jpg'})`}}>
         <div className='mainbreadcumb'>
           <div className='container'>
             <div className='row align-items-center px-0'>

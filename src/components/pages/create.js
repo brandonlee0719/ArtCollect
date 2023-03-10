@@ -3,11 +3,17 @@ import Clock from "../components/Clock";
 import Footer from '../components/footer';
 
 import { createGlobalStyle } from 'styled-components';
-import auth from '../../core/auth';
+import auth, { apiKey } from '../../core/auth';
+import { nftUrl } from "../../core/nft";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAuthorList } from "../../store/actions/thunks";
 import * as selectors from '../../store/selectors';
 import api from "../../core/api";
+import { mintNFT } from "../../store/actions/contractAction";
+import { Tezos } from "../../utils/constants";
+import axios from "axios";
+import request from "../../core/auth/request";
+import uuid from 'react-uuid';
 
 const GlobalStyles = createGlobalStyle`
   .mainside{
@@ -20,10 +26,14 @@ const GlobalStyles = createGlobalStyle`
     }
   }
 `;
+// const apiKey =
+//   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWQ6ZXRocjoweDRmODc5OTVlNWExNzgxYTBDRDkxOTBCMGFmOTg4OTc0N0I3MTBhOTkiLCJpc3MiOiJuZnQtc3RvcmFnZSIsImlhdCI6MTY3NzE0OTc3MDc1MiwibmFtZSI6IkFydENvbGxlY3QifQ.PLt3VASll7EXdxqshzVZDtA3lW7Zr5aDsGpjhBI_Qf8";
+// const client = new NFTStorage({ token: apiKey });
 
 const CreatePage = () => {
   const dispatch = useDispatch();
   const authorsState = useSelector(selectors.authorsState);
+  const jwt = auth.getToken();
   const [author, setAuthor] = useState({});
 
   const [isActive, setActive] = useState(false);
@@ -33,6 +43,7 @@ const CreatePage = () => {
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
   const [royalties, setRoyalties] = useState("");
+  const [loadingSubmit, setLoading] = useState(false);
 
   const onChangeFile = (e) => {
     var file = e.target.files[0];
@@ -65,8 +76,78 @@ const CreatePage = () => {
   }
 
   const handleCreate = (e) => {
-    console.log("------------>", e);
     e.preventDefault();
+    if (
+      title === "" ||
+      description === "" ||
+      price === "" ||
+      royalties === "" ||
+      file.length === 0
+    ) {
+      return;
+    }
+    setLoading(true);
+    (async () => {
+      const uploadedNFTURL = await handleSubmitNFTPicture(file);
+      const metadata = await handleSubmitNFT({
+        "unique_id": uuid(),
+        "title": title,
+        "description": description,
+        "price": price,
+        "nft_link": api.baseUrl + uploadedNFTURL[0].url,
+        "author": author,
+        "preview_image": uploadedNFTURL
+      })
+      dispatch(mintNFT({ Tezos, amount: price, metadata }))
+
+      setLoading(false);
+      setClear();
+    })();
+  }
+
+  const handleSubmitNFTPicture = async (file) => {
+
+    var formData = new FormData()
+    formData.append('files', file)
+    formData.append('field', 'nft') // link the image to a specific field
+
+    return await axios({
+      method: 'post',
+      url: `${api.baseUrl}/api/upload`,
+      data: formData,
+      headers: {
+        // Authorization: `Bearer ${jwt}`,
+        "Content-Type": "multipart/form-data"
+      }
+    }).then(res => {
+      return res.data;
+    }).catch(err => {
+      console.log(err);
+    });
+  }
+
+  const handleSubmitNFT = async (data) => {
+
+    let config = {
+      headers: {
+        'Authorization': 'Bearer ' + apiKey
+      }
+    }
+    return await request(nftUrl, { method: 'post', body: { "data": data }, config })
+      .then((response) => {
+        return response.data.attributes.unique_id;
+      }).catch((err) => {
+        console.log(err);
+      });
+  }
+
+  const setClear = () => {
+    setFile(null);
+    setFileURL(null);
+    setTitle("");
+    setDescription("");
+    setPrice("");
+    setRoyalties("");
   }
 
   const handleShow = () => {

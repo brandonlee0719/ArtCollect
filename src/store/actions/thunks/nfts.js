@@ -37,6 +37,8 @@ export const fetchNftShowcase = () => async (dispatch) => {
       params: {}
     });
 
+    console.log("data===>", data);
+
     dispatch(actions.getNftShowcase.success(data.data.attributes));
   } catch (err) {
     dispatch(actions.getNftShowcase.failure(err));
