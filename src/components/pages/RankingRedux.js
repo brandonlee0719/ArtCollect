@@ -60,7 +60,7 @@ const RankingRedux = () => {
   }, [dispatch]);
 
   return (
-    <div>
+    <div style={{ height: '100%', display: "flex", flexDirection: 'column' }}>
       <section className='jumbotron breadcumb no-bg'>
         <div className='mainbreadcumb'>
         <div className='container'>
@@ -73,7 +73,7 @@ const RankingRedux = () => {
         </div>
     </section>
 
-      <section className='container'>
+      <section className='container' style={{flex: 1}}>
         <div className='row'>
           <div className='col-lg-12'>
             <div className="items_filter centerEl">

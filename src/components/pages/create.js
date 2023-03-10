@@ -191,7 +191,7 @@ const CreatePage = () => {
   }, []);
 
   return (
-    <div>
+    <div style={{height: '100%', display: "flex", flexDirection: 'column'}}>
       <GlobalStyles />
       <section className='jumbotron breadcumb no-bg' >
         <div className='mainbreadcumb' >
@@ -205,7 +205,7 @@ const CreatePage = () => {
         </div>
       </section>
 
-      <section className='container'>
+      <section className='container' style={{flex: 1}}>
 
         <div className="row">
           <div className="col-lg-7 offset-lg-1 mb-5">

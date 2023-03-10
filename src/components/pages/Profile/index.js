@@ -160,14 +160,14 @@ const Profile = () => {
     }, []);
 
     return (
-        <div>
+        <div style={{height: '100%', display: "flex", flexDirection: 'column'}}>
             <GlobalStyles />
             <section id='profile_banner' className='jumbotron breadcumb no-bg' style={{ backgroundImage: profileBannerTemp ? `url(${profileBannerTemp})` : author && author.banner && author.banner.url ? `url(${api.baseUrl + author.banner.url})` : 'url(../../img/author_single/author_banner.jpg)' }}>
                 <div className='mainbreadcumb'>
                 </div>
             </section>
 
-            <section id="section-main" aria-label="section">
+            <section id="section-main" aria-label="section" style={{flex: 1}}>
                 <div className="container">
                     <div className="row">
                         <div className="col-lg-10 offset-lg-1 d-flex">

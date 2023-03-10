@@ -65,7 +65,7 @@ const GlobalStyles = createGlobalStyle`
 `;
 
 const homethree = () => (
-  <div>
+  <div style={{height: '100%', display: "flex", flexDirection: 'column'}}>
     <GlobalStyles />
     <section className="jumbotron no-bg">
       {/* <div className='container'>
@@ -236,7 +236,7 @@ const homethree = () => (
         </div>
       </div>
     </section>
-
+    <div style={{flex: 1}}></div>
     <Footer />
 
   </div>
