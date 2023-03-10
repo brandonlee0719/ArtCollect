@@ -53,50 +53,50 @@ const GlobalStyles = createGlobalStyle`
 
 const ProtectedRoute = ({ children }) => {
   let location = useLocation();
-  const isAuth = auth.getToken() !== null;
-
+  const isAuth = auth.getToken() !== null || localStorage.getItem('wallet') !== null;
+  console.log(isAuth)
   return (
-      isAuth ? children : <Navigate to="/login" state={{ from: location }} replace />
+    isAuth ? children : <Navigate to="/login" state={{ from: location }} replace />
   )
 };
 
-const app= () => (
+const app = () => (
   <div className="wraper">
-  <GlobalStyles />
-    <Header/>
+    <GlobalStyles />
+    <Header />
     <Routes>
       <Route path="*" element={<Navigate to="/home" replace />} />
       <Route path="/Author">
-        <Route 
-          path=":authorId" 
+        <Route
+          path=":authorId"
           element={
             <ProtectedRoute>
               <Author />
             </ProtectedRoute>
-          } 
+          }
         />
       </Route>
       <Route path="/Profile">
-        <Route 
-          path=":authorId" 
+        <Route
+          path=":authorId"
           element={
             <ProtectedRoute>
               <Profile />
             </ProtectedRoute>
-          } 
+          }
         />
       </Route>
       <Route path="/home" element={<Home />} />
-      <Route element={<Home1/>} path="/home1" />
-      <Route element={<Home2/>} path="/home2" />
-      <Route element={<Explore/>} path="/explore" />
-      <Route element={<Explore2/>} path="/explore2" />
-      <Route element={<ExploreOpensea/>} path="/exploreOpensea" />
-      <Route element={<RankingRedux/>} path="/rangking" />
-      <Route element={<Auction/>} path="/Auction" />
-      <Route element={<Helpcenter/>} path="/helpcenter" />
-      <Route element={<Colection/>} path="/colection/:collectionId" />
-      <Route element={<ItemDetailRedux/>} path="/ItemDetail/:nftId" />
+      <Route element={<Home1 />} path="/home1" />
+      <Route element={<Home2 />} path="/home2" />
+      <Route element={<Explore />} path="/explore" />
+      <Route element={<Explore2 />} path="/explore2" />
+      <Route element={<ExploreOpensea />} path="/exploreOpensea" />
+      <Route element={<RankingRedux />} path="/rangking" />
+      <Route element={<Auction />} path="/Auction" />
+      <Route element={<Helpcenter />} path="/helpcenter" />
+      <Route element={<Colection />} path="/colection/:collectionId" />
+      <Route element={<ItemDetailRedux />} path="/ItemDetail/:nftId" />
       <Route element={<AuthorOpensea />} path="/AuthorOpensea" />
       <Route element={<Wallet />} path="/wallet" />
       <Route element={<Login />} path="/login" />
