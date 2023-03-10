@@ -36,10 +36,7 @@ export const fetchNftShowcase = () => async (dispatch) => {
       cancelToken: Canceler.token,
       params: {}
     });
-
-    console.log("data===>", data);
-
-    dispatch(actions.getNftShowcase.success(data.data.attributes));
+    dispatch(actions.getNftShowcase.success(data));
   } catch (err) {
     dispatch(actions.getNftShowcase.failure(err));
   }
