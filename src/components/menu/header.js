@@ -378,7 +378,7 @@ const Header = function () {
                     <div className="popshow">
                       <div className="d-name">
                         <h4>{author && author.username ? author.username : "ArtCollecter"}</h4>
-                        <span className="name" onClick={() => window.open("", "_self")}>Set display name</span>
+                        <span className="name" onClick={() => window.open(`https://artcollect.io/profile/${author && author.id ? author.id : '0'}`, "_self")}>Set display name</span>
                       </div>
                       <div className="d-balance">
                         <h4>Balance</h4>
