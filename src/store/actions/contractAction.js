@@ -101,6 +101,8 @@ export const mintNFT = ({ Tezos, amount, metadata }) => {
             for (var i = 0; i < metadata.length; i++) {
                 bytes += metadata.charCodeAt(i).toString(16).slice(-4);
             }
+
+            console.log("contract, bytes==============>", contract, bytes);
             const op = await contract.methods.mint(amount, bytes).send();
             await op.confirmation();
             dispatch(fetchData());
