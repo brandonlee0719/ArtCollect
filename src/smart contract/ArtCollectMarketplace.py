@@ -16,9 +16,9 @@ class ArtCollect_Marketplace(sp.Contract):
         self.init(
             price_for_minting = sp.mutez(1000),
             to_cadaf = sp.nat(3),
-            token = token,
+            token = sp.address("KT1UwF9paf4yGkeyKco5sp9NjC5mZxLhGdCG"),
             metadata = metadata,
-            admin = admin,
+            admin = sp.address("tz1QxxnsChm6PejQ6pxQ8BMaShPTvATenpE9"),
             data = sp.big_map(tkey=sp.TNat, tvalue=sp.TRecord(holder=sp.TAddress, author = sp.TAddress, owner = sp.TAddress, royalties=sp.TNat, token_id=sp.TNat, link_to_json = sp.TBytes, collectable=sp.TBool, amount=sp.TMutez )),
             token_id = 0,
             )
@@ -132,18 +132,18 @@ class ArtCollect_Marketplace(sp.Contract):
 def test():
     scenario = sp.test_scenario()
     
-    admin = sp.test_account("admin")
+    admin = sp.address("tz1QxxnsChm6PejQ6pxQ8BMaShPTvATenpE9")
     mark = sp.test_account("user1")
     elon = sp.test_account("user2")
     vera = sp.test_account("user3")
     
     scenario.h1("Token contract")
-    token_contract = ArtCollect_Token(FA2.FA2_config(non_fungible = True), admin = admin.address, metadata = sp.utils.metadata_of_url("ipfs://QmeF48X9tNUriCibMUwBbkAASAEzS53zkg8CxEk1qHmjpy"))
+    token_contract = ArtCollect_Token(FA2.FA2_config(non_fungible = True), admin = sp.address("tz1QxxnsChm6PejQ6pxQ8BMaShPTvATenpE9"), metadata = sp.utils.metadata_of_url("ipfs://QmeF48X9tNUriCibMUwBbkAASAEzS53zkg8CxEk1qHmjpy"))
     
     scenario += token_contract
 
     scenario.h1("MarketPlace contract")
-    marketplace = ArtCollect_Marketplace(token_contract.address, sp.utils.metadata_of_url("ipfs://QmR3NfLjUY4nxqhrcuFqsxEXXVJr22A6QvSskjd9MBzT9A"), admin.address)
+    marketplace = ArtCollect_Marketplace(token_contract.address, sp.utils.metadata_of_url("ipfs://QmR3NfLjUY4nxqhrcuFqsxEXXVJr22A6QvSskjd9MBzT9A"), sp.address("tz1QxxnsChm6PejQ6pxQ8BMaShPTvATenpE9"))
     scenario += marketplace
     
     scenario.h2("Successfully set administrator for token contract when sender is admin")
