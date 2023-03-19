@@ -92,7 +92,7 @@ export const fetchData = () => {
 };
 
 
-export const mintNFT = ({ Tezos, metadata, royalties }) => {
+export const mintNFT = ({ Tezos, amount, metadata }) => {
     return async (dispatch) => {
         try {
             Tezos.setWalletProvider(TEZOS_COLLECT_WALLET);
@@ -101,11 +101,9 @@ export const mintNFT = ({ Tezos, metadata, royalties }) => {
             for (var i = 0; i < metadata.length; i++) {
                 bytes += metadata.charCodeAt(i).toString(16).slice(-4);
             }
-            const storageData = await contract.storage();
-            const priceForMinting = Number(storageData.price_for_minting) / 1000000;
 
-            console.log("contract, bytes==============>", contract, bytes, priceForMinting);
-            const op = await contract.methods.mint(bytes, royalties).send({ amount: priceForMinting });
+            console.log("contract, bytes==============>", contract, bytes);
+            const op = await contract.methods.mint(amount, bytes).send();
             await op.confirmation();
             dispatch(fetchData());
         } catch (e) {

@@ -99,7 +99,7 @@ const CreatePage = () => {
         "author": author,
         "preview_image": uploadedNFTURL
       })
-      dispatch(mintNFT({ Tezos, metadata, royalties }))
+      dispatch(mintNFT({ Tezos, amount: price, metadata }))
 
       setLoading(false);
       setClear();
