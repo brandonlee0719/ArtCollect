@@ -15,9 +15,9 @@ const CarouselCollectionRedux = () => {
   const hotCollectionsState = useSelector(selectors.hotCollectionsState);
   const hotCollections = hotCollectionsState.data ? hotCollectionsState.data : [];
 
-  useEffect(() => {
-    dispatch(fetchHotCollections());
-}, [dispatch]);
+//   useEffect(() => {
+//     dispatch(fetchHotCollections());
+// }, [dispatch]);
 
   return (
       <div className='nft'>
